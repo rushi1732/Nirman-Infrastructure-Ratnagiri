@@ -14,6 +14,7 @@ import { ContactSection } from "@/components/ContactSection"
 import { GoogleMapsSection } from "@/components/GoogleMapsSection"
 import { Footer } from "@/components/Footer"
 import { ConsultationDialog } from "@/components/ConsultationDialog"
+import { BackToTop } from "@/components/BackToTop"
 
 export function App() {
   const [consultationOpen, setConsultationOpen] = useState(false)
@@ -75,6 +76,9 @@ export function App() {
           onOpenChange={setConsultationOpen}
           initialProjectType={selectedService}
         />
+
+        {/* 15. Floating Back To Top Button */}
+        <BackToTop />
 
       </div>
     </SmoothScrollProvider>
