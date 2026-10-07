@@ -319,15 +319,15 @@ export const ALL_SERVICES_LIST = SERVICES_DATA
 export const PROJECTS_DATA: Project[] = [
   {
     id: "proj-1",
-    title: "Coastal Horizon Residency",
+    title: "Nirman Residency",
     category: "Residential",
     status: "Completed",
     location: "Nachane, Ratnagiri",
-    area: "8,500 sq.ft Built-up",
-    description: "A contemporary residential project featuring structured balconies, regional stone accents, and weather-conscious design suitable for coastal Ratnagiri.",
-    image: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=80",
-    features: ["Rainwater Planning", "RCC Framed Structure", "Cross-Ventilation Layout", "Quality Flooring"],
-    isPlaceholder: true
+    area: "Multi-Storey Residential Complex",
+    description: "Multi-storey contemporary residential apartment building constructed with planned balconies, parking spaces, and quality concrete execution in Nachane, Ratnagiri.",
+    image: "/images/nirman-building.png",
+    features: ["RCC Framed Structure", "Elevated Balconies", "Stilt Parking", "Dedicated Access Gate"],
+    isPlaceholder: false
   },
   {
     id: "proj-2",

@@ -3,10 +3,10 @@ import { ArrowUpRight, MapPin } from "lucide-react"
 import { COMPANY_INFO } from "@/data/nirmanData"
 
 interface AboutSectionProps {
-  onOpenConsultation: () => void
+  onOpenConsultation?: () => void
 }
 
-export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConsultation }) => {
+export const AboutSection: React.FC<AboutSectionProps> = () => {
   return (
     <section id="about" className="py-28 bg-[#F4F1EA] text-[#252421] relative overflow-hidden">
       
@@ -103,14 +103,13 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onOpenConsultation }
 
             {/* Action */}
             <div className="pt-4">
-              <button
-                type="button"
-                onClick={onOpenConsultation}
-                className="px-6 py-3.5 rounded text-xs uppercase tracking-wider font-semibold text-white bg-[#1C1C1A] hover:bg-[#A8793D] transition-colors cursor-pointer flex items-center gap-2"
+              <a
+                href="#services"
+                className="inline-flex px-6 py-3.5 rounded text-xs uppercase tracking-wider font-semibold text-white bg-[#1C1C1A] hover:bg-[#A8793D] transition-colors items-center gap-2"
               >
-                <span>Discuss Your Project With Our Team</span>
+                <span>View Construction Capabilities</span>
                 <ArrowUpRight className="w-4 h-4" />
-              </button>
+              </a>
             </div>
 
           </div>
