@@ -1,5 +1,5 @@
 import React from "react"
-import { ArrowUpRight, MapPin } from "lucide-react"
+import { MapPin } from "lucide-react"
 import { COMPANY_INFO } from "@/data/nirmanData"
 
 interface AboutSectionProps {
