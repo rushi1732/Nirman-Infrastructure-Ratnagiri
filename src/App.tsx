@@ -17,10 +17,12 @@ import { GoogleMapsSection } from "@/components/GoogleMapsSection"
 import { Footer } from "@/components/Footer"
 import { ConsultationDialog } from "@/components/ConsultationDialog"
 import { BackToTop } from "@/components/BackToTop"
+import { IntroSplashScreen } from "@/components/IntroSplashScreen"
 
 export function App() {
   const [consultationOpen, setConsultationOpen] = useState(false)
   const [selectedService, setSelectedService] = useState<string | undefined>(undefined)
+  const [introCompleted, setIntroCompleted] = useState(false)
 
   const handleOpenConsultation = (serviceName?: string) => {
     setSelectedService(serviceName)
@@ -29,6 +31,10 @@ export function App() {
 
   return (
     <SmoothScrollProvider>
+      {/* Cinematic Intro Splash Screen */}
+      <IntroSplashScreen onComplete={() => setIntroCompleted(true)} />
+
+      {/* Main Website Container - Kept completely static without transforms so footer never shifts */}
       <div className="min-h-screen bg-[#F4F1EA] text-[#1C1C1A] selection:bg-[#A8793D] selection:text-white relative font-sans">
         
         {/* 1. Global Sticky Navbar with Continuous Top Marquee Bar */}
