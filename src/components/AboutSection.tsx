@@ -101,17 +101,6 @@ export const AboutSection: React.FC<AboutSectionProps> = () => {
               </div>
             </div>
 
-            {/* Action */}
-            <div className="pt-4">
-              <a
-                href="#services"
-                className="inline-flex px-6 py-3.5 rounded text-xs uppercase tracking-wider font-semibold text-white bg-[#1C1C1A] hover:bg-[#A8793D] transition-colors items-center gap-2"
-              >
-                <span>View Construction Capabilities</span>
-                <ArrowUpRight className="w-4 h-4" />
-              </a>
-            </div>
-
           </div>
 
         </div>
