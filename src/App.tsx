@@ -10,7 +10,6 @@ import { WhyChooseUsSection } from "@/components/WhyChooseUsSection"
 import { ProcessSection } from "@/components/ProcessSection"
 import { GsapStorytellingSection } from "@/components/GsapStorytellingSection"
 import { CostEstimatorSection } from "@/components/CostEstimatorSection"
-import { StatsSection } from "@/components/StatsSection"
 import { GallerySection } from "@/components/GallerySection"
 import { TestimonialsSection } from "@/components/TestimonialsSection"
 import { FaqSection } from "@/components/FaqSection"
@@ -45,68 +44,62 @@ export function App() {
 
   return (
     <SmoothScrollProvider>
-      <div className="min-h-screen bg-[#080d17] text-[#f8fafc] selection:bg-[#0284c7] selection:text-white relative font-sans">
+      <div className="min-h-screen bg-arch-ivory text-arch-charcoal selection:bg-arch-bronze selection:text-white relative font-sans">
         
-        {/* Subtle Architectural Grid Texture */}
-        <div className="fixed inset-0 pointer-events-none opacity-20 -z-10 bg-blueprint-grid" />
-
-        {/* 1. Global Sticky Navbar with Official Logo */}
+        {/* 1. Global Sticky Architectural Navbar with Official Logo */}
         <Navbar onOpenConsultation={() => handleOpenConsultation()} />
 
         <main id="main-content">
-          {/* 2. Cinematic Architectural Hero Section */}
+          {/* 2. Hero Section: Full-bleed Architectural Photography */}
           <Hero onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 3. About / Brand Introduction */}
+          {/* 3. About / Brand Story & Perspective */}
           <AboutSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 4. Comprehensive Services Capabilities */}
+          {/* 4. Comprehensive Services: 4 Featured + 8 Additional List */}
           <ServicesSection onSelectService={handleOpenConsultation} />
 
-          {/* 5. Interactive Project Showcase */}
+          {/* 5. Architectural Portfolio & Case Studies */}
           <ProjectsSection onInquireProject={(title) => handleOpenConsultation(`Project: ${title}`)} />
 
-          {/* 6. Interactive 3D Architectural Scene (React Three Fiber + Drei) */}
+          {/* 6. Abstract Physical Massing 3D Model (Three.js / Drei) */}
           <ThreeArchitecturalCanvas onOpenConsultation={() => handleOpenConsultation("Custom Architectural Elevation")} />
 
-          {/* 7. Why Choose Us Section */}
+          {/* 7. Why Choose Us: Foundational Principles */}
           <WhyChooseUsSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 8. 6-Stage Construction Process Timeline */}
+          {/* 8. 6-Stage Construction Workflow */}
           <ProcessSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 9. GSAP Scroll Storytelling Section */}
+          {/* 9. Lifecycle Storytelling Section */}
           <GsapStorytellingSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 10. Interactive Cost & Timeline Estimator */}
+          {/* 10. Preliminary Cost & Timeline Estimator */}
           <CostEstimatorSection onOpenConsultationWithData={handleOpenWithEstimatorData} />
 
-          {/* 11. Statistics & Track Record Standards */}
-          <StatsSection />
-
-          {/* 12. Visual Quality Gallery */}
+          {/* 11. Visual Portfolio Gallery with Modal Lightbox */}
           <GallerySection />
 
-          {/* 13. Testimonials & Google Business Reviews */}
+          {/* 12. Editorial Client Testimonials & Google Business Attribution */}
           <TestimonialsSection />
 
-          {/* 14. Real Estate & Construction FAQ */}
+          {/* 13. Frequently Asked Questions */}
           <FaqSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 15. Closing Lead Generation CTA */}
+          {/* 14. Full-bleed Closing Lead CTA */}
           <LeadCtaSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 16. Contact Details & Project Enquiry Form */}
+          {/* 15. Office Contact Details & Project Enquiry Form */}
           <ContactSection />
 
-          {/* 17. Google Maps Office Location */}
+          {/* 16. Google Maps Nachane Office Location */}
           <GoogleMapsSection />
         </main>
 
-        {/* 18. Architectural Footer */}
+        {/* 17. Deep Charcoal Architectural Footer */}
         <Footer />
 
-        {/* 19. Consultation & Project Enquiry Modal Dialog */}
+        {/* 18. Project Consultation Modal Dialog */}
         <ConsultationDialog
           open={consultationOpen}
           onOpenChange={setConsultationOpen}

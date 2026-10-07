@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,26 +6,26 @@
 
 @layer base {
   :root {
-    --background: 222 47% 7%;
-    --foreground: 210 40% 98%;
-    --card: 222 40% 11%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222 47% 7%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 200 98% 39%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 142 76% 36%;
-    --secondary-foreground: 0 0% 100%;
-    --muted: 222 25% 18%;
-    --muted-foreground: 215 20% 65%;
-    --accent: 38 92% 50%;
+    --background: 42 27% 94%;
+    --foreground: 40 5% 14%;
+    --card: 40 20% 88%;
+    --card-foreground: 40 5% 14%;
+    --popover: 42 27% 94%;
+    --popover-foreground: 40 5% 14%;
+    --primary: 34 47% 45%;
+    --primary-foreground: 42 27% 96%;
+    --secondary: 40 20% 88%;
+    --secondary-foreground: 40 5% 14%;
+    --muted: 40 10% 80%;
+    --muted-foreground: 40 6% 42%;
+    --accent: 34 47% 45%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
     --destructive-foreground: 210 40% 98%;
-    --border: 222 30% 20%;
-    --input: 222 30% 20%;
-    --ring: 200 98% 39%;
-    --radius: 0.5rem;
+    --border: 40 18% 81%;
+    --input: 40 18% 81%;
+    --ring: 34 47% 45%;
+    --radius: 0.25rem;
   }
 
   * {
@@ -34,43 +34,31 @@
   }
 
   body {
-    background-color: #080d17;
-    color: #f8fafc;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F4F1EA;
+    color: #252421;
+    font-family: 'Plus Jakarta Sans', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    letter-spacing: -0.02em;
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', 'Cormorant Garamond', Georgia, serif;
+    letter-spacing: -0.015em;
   }
 }
 
-/* Blueprint / Architectural grid lines */
-.bg-blueprint-grid {
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-                    linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-  background-size: 40px 40px;
+/* Subtle architectural divider line */
+.arch-line {
+  height: 1px;
+  background-color: #D8D2C5;
+  width: 100%;
 }
 
-.bg-dot-grid {
-  background-image: radial-gradient(rgba(2, 132, 199, 0.15) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
-
-/* Architectural gradient borders */
-.border-gradient-blue {
-  border-image: linear-gradient(to right, #0284c7, #16a34a) 1;
-}
-
-/* Glassmorphism restrained */
-.architectural-glass {
-  background: rgba(13, 21, 39, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+.arch-line-dark {
+  height: 1px;
+  background-color: #31312E;
+  width: 100%;
 }
 
 /* Lenis smooth scrolling styles */
@@ -94,26 +82,26 @@ html.lenis, html.lenis body {
   pointer-events: none;
 }
 
-/* Custom modern scrollbar */
+/* Restrained architectural scrollbar */
 ::-webkit-scrollbar {
-  width: 7px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: #080d17;
+  background: #F4F1EA;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #1e2d4d;
-  border-radius: 4px;
+  background: #C4BDAF;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #0284c7;
+  background: #A8793D;
 }
 
-/* Smooth selection */
+/* Selection */
 ::selection {
-  background: #0284c7;
-  color: #ffffff;
+  background: #A8793D;
+  color: #FFFFFF;
 }

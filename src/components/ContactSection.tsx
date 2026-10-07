@@ -7,20 +7,18 @@ import {
   Clock, 
   MessageSquare, 
   Send, 
-  CheckCircle2, 
-  ExternalLink,
-  Building2,
-  Navigation
+  Check, 
+  ExternalLink
 } from "lucide-react"
-import { COMPANY_INFO } from "@/data/nirmanData"
+import { COMPANY_INFO, ALL_SERVICES_LIST } from "@/data/nirmanData"
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     phoneNumber: "",
     email: "",
-    projectType: "Residential Construction",
-    projectLocation: "",
+    projectType: "Building Construction Services",
+    projectLocation: "Ratnagiri",
     message: "",
   })
 
@@ -38,191 +36,165 @@ export const ContactSection: React.FC = () => {
     e.preventDefault()
     setLoading(true)
 
-    // Simulate reliable enquiry dispatch
     setTimeout(() => {
       setLoading(false)
       setSubmitted(true)
-    }, 800)
+    }, 700)
   }
 
   return (
-    <section id="contact" className="py-24 bg-[#080d17] relative overflow-hidden border-t border-slate-800/80">
-      
-      {/* Blueprint Grid */}
-      <div className="absolute inset-0 bg-blueprint-grid opacity-20 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="contact" className="py-24 sm:py-32 bg-arch-ivory border-t border-arch-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-sky-800/60 text-sky-400 text-xs font-mono uppercase tracking-wider">
-            <Building2 className="w-3.5 h-3.5" />
-            <span>Connect with our Nachane Office</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl space-y-3">
+            <span className="text-xs uppercase tracking-[0.25em] text-arch-bronze font-semibold">
+              Contact & Inquiries
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-arch-charcoal tracking-tight">
+              Start a Conversation About Your Site
+            </h2>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            Contact Nirman Infrastructure Ratnagiri
-          </h2>
-
-          <p className="text-sm sm:text-base text-slate-300 font-sans leading-relaxed">
-            Discuss your construction blueprints, schedule a site inspection, or visit our office behind Chhatrapati Shivaji Maharaj Stadium.
+          <p className="text-arch-muted text-sm sm:text-base max-w-md leading-relaxed font-sans">
+            Reach out directly to arrange a consultation at our Ratnagiri office or request a site visit for your upcoming project.
           </p>
         </div>
 
-        {/* 2-Column Contact Info + Interactive Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
           
-          {/* Left Column: Official Business Details (5 Cols) */}
+          {/* Left Column: Office & Contact Information (5 Cols) */}
           <div className="lg:col-span-5 space-y-8">
             
-            <div className="p-8 rounded-2xl bg-slate-900/80 border border-slate-800 shadow-xl space-y-6">
-              
-              <div className="space-y-1">
-                <span className="text-xs font-mono uppercase tracking-wider text-sky-400 font-semibold block">
-                  Official Office Details
-                </span>
-                <h3 className="text-2xl font-display font-bold text-white">
-                  Nirman Infrastructure Ratnagiri
-                </h3>
-                <p className="text-xs text-slate-400 font-sans">
-                  Real Estate Builders & Construction Company
-                </p>
-              </div>
+            {/* Office Address Card */}
+            <div className="bg-arch-stone/30 border border-arch-border p-8 rounded-sm space-y-6">
+              <span className="text-xs font-mono uppercase tracking-widest text-arch-bronze block">
+                Corporate Headquarters
+              </span>
 
-              {/* Address details */}
-              <div className="flex items-start gap-3.5 pt-2 border-t border-slate-800/80 text-sm text-slate-300">
-                <MapPin className="w-5 h-5 text-sky-400 flex-shrink-0 mt-1" />
-                <div className="space-y-1">
-                  <span className="font-semibold text-white block">Office Address:</span>
-                  <p className="leading-relaxed text-slate-300 font-sans text-xs sm:text-sm">
-                    {COMPANY_INFO.address.line1}, <br />
-                    {COMPANY_INFO.address.line2}, <br />
-                    {COMPANY_INFO.address.locality}, {COMPANY_INFO.address.city}, <br />
-                    {COMPANY_INFO.address.state} — {COMPANY_INFO.address.pincode}
-                  </p>
+              <div className="space-y-4">
+                <div className="flex items-start gap-3.5">
+                  <MapPin className="w-5 h-5 text-arch-bronze flex-shrink-0 mt-0.5" />
+                  <div className="text-sm font-sans text-arch-charcoal leading-relaxed">
+                    <span className="font-semibold block">{COMPANY_INFO.address.officeName}</span>
+                    <span>{COMPANY_INFO.address.landmark},</span><br />
+                    <span>{COMPANY_INFO.address.street}, {COMPANY_INFO.address.area},</span><br />
+                    <span>Ratnagiri, Maharashtra {COMPANY_INFO.address.pincode}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5">
+                  <Phone className="w-5 h-5 text-arch-bronze flex-shrink-0" />
+                  <div className="text-sm font-sans">
+                    <a
+                      href={`tel:${COMPANY_INFO.phoneRaw}`}
+                      className="text-arch-charcoal font-medium hover:text-arch-bronze transition-colors"
+                    >
+                      {COMPANY_INFO.phone}
+                    </a>
+                    <span className="text-xs text-arch-muted block">Direct line for project inquiries</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5">
+                  <Mail className="w-5 h-5 text-arch-bronze flex-shrink-0" />
+                  <div className="text-sm font-sans">
+                    <a
+                      href={`mailto:${COMPANY_INFO.email}`}
+                      className="text-arch-charcoal font-medium hover:text-arch-bronze transition-colors"
+                    >
+                      {COMPANY_INFO.email}
+                    </a>
+                    <span className="text-xs text-arch-muted block">Official communication</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3.5">
+                  <Clock className="w-5 h-5 text-arch-bronze flex-shrink-0" />
+                  <div className="text-sm font-sans text-arch-charcoal">
+                    <span className="font-medium">{COMPANY_INFO.hours.days}</span>
+                    <span className="text-xs text-arch-muted block">{COMPANY_INFO.hours.timings}</span>
+                  </div>
                 </div>
               </div>
 
-              {/* Phone details */}
-              <div className="flex items-start gap-3.5 border-t border-slate-800/80 pt-4 text-sm text-slate-300">
-                <Phone className="w-5 h-5 text-emerald-400 flex-shrink-0 mt-1" />
-                <div>
-                  <span className="font-semibold text-white block">Direct Phone / Enquiries:</span>
-                  <a
-                    href={`tel:${COMPANY_INFO.phoneRaw}`}
-                    className="font-mono text-base font-bold text-sky-400 hover:text-sky-300 transition-colors block mt-0.5"
-                  >
-                    {COMPANY_INFO.phone}
-                  </a>
-                  <span className="text-[11px] text-slate-400">Lines open Monday – Saturday</span>
-                </div>
-              </div>
-
-              {/* Working Hours */}
-              <div className="flex items-start gap-3.5 border-t border-slate-800/80 pt-4 text-xs text-slate-300">
-                <Clock className="w-5 h-5 text-amber-400 flex-shrink-0 mt-0.5" />
-                <div>
-                  <span className="font-semibold text-white block">Operating Hours:</span>
-                  <span className="text-slate-300">{COMPANY_INFO.workingHours}</span>
-                </div>
-              </div>
-
-              {/* Quick Action Buttons */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-4 border-t border-slate-800/80">
+              <div className="pt-4 border-t border-arch-border/70 flex items-center justify-between">
                 <a
-                  href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="py-3 px-4 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700 transition-colors"
-                >
-                  <Phone className="w-3.5 h-3.5 text-sky-400" />
-                  <span>Call Directly</span>
-                </a>
-
-                <a
-                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
-                    "Hello Nirman Infrastructure, I would like to get in touch regarding a construction project."
-                  )}`}
+                  href={COMPANY_INFO.googleMapsUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="py-3 px-4 rounded-xl bg-emerald-950/70 hover:bg-emerald-900/80 text-emerald-300 font-semibold text-xs flex items-center justify-center gap-2 border border-emerald-800/60 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans text-arch-bronze hover:underline"
                 >
-                  <MessageSquare className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Open in Google Maps</span>
+                  <ExternalLink className="w-3.5 h-3.5" />
+                </a>
+                <a
+                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Hello%20Nirman%20Infrastructure,%20I%20would%20like%20to%20discuss%20a%20construction%20project.`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1.5 text-xs font-sans text-arch-charcoal hover:text-arch-bronze"
+                >
+                  <MessageSquare className="w-3.5 h-3.5 text-arch-bronze" />
                   <span>WhatsApp Chat</span>
                 </a>
               </div>
+            </div>
 
-              {/* Google Maps Directions Action */}
-              <a
-                href={COMPANY_INFO.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full py-3 px-4 rounded-xl bg-sky-950/60 hover:bg-sky-900/70 text-sky-300 font-semibold text-xs flex items-center justify-center gap-2 border border-sky-800/60 transition-colors"
-              >
-                <Navigation className="w-4 h-4 text-sky-400" />
-                <span>Get Directions on Google Maps</span>
-                <ExternalLink className="w-3.5 h-3.5 ml-1" />
-              </a>
-
+            {/* Local Context Notice */}
+            <div className="p-6 bg-arch-ivory border border-arch-border rounded-sm">
+              <h4 className="font-serif text-sm font-medium text-arch-charcoal mb-1">
+                Local Presence in Ratnagiri
+              </h4>
+              <p className="text-xs text-arch-muted font-sans leading-relaxed">
+                Operating across Nachane, Kuwarbav, Shivaji Nagar, Mirjole, Zadgaon, and greater Ratnagiri district.
+              </p>
             </div>
 
           </div>
 
-          {/* Right Column: Contact & Project Enquiry Form (7 Cols) */}
-          <div className="lg:col-span-7">
+          {/* Right Column: Project Enquiry Form (7 Cols) */}
+          <div className="lg:col-span-7 bg-arch-stone/20 border border-arch-border p-8 sm:p-12 rounded-sm">
             
-            <div className="p-8 sm:p-10 rounded-2xl bg-slate-900/90 border border-slate-800 shadow-2xl relative">
-              
-              <div className="mb-8 space-y-2">
-                <h3 className="text-2xl font-display font-bold text-white">
-                  Send Project Enquiry
-                </h3>
-                <p className="text-xs sm:text-sm text-slate-400 font-sans">
-                  Provide your project specifics and our technical team will review and contact you with preliminary estimates.
-                </p>
-              </div>
-
+            <AnimatePresence mode="wait">
               {submitted ? (
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.95 }}
+                  initial={{ opacity: 0, scale: 0.98 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  className="p-8 rounded-xl bg-emerald-950/40 border border-emerald-700/60 text-center space-y-4"
+                  className="py-12 text-center space-y-4"
                 >
-                  <div className="w-14 h-14 rounded-full bg-emerald-900/80 text-emerald-400 mx-auto flex items-center justify-center border border-emerald-600/40">
-                    <CheckCircle2 className="w-8 h-8" />
+                  <div className="w-12 h-12 bg-arch-stone border border-arch-border rounded-full mx-auto flex items-center justify-center text-arch-bronze">
+                    <Check className="w-6 h-6" />
                   </div>
-                  <div className="space-y-2">
-                    <h4 className="text-xl font-display font-bold text-white">
-                      Enquiry Received
-                    </h4>
-                    <p className="text-sm text-emerald-200 font-sans max-w-md mx-auto leading-relaxed">
-                      Thank you for contacting Nirman Infrastructure. Our team will get in touch with you shortly.
-                    </p>
-                  </div>
+                  <h3 className="font-serif text-2xl text-arch-charcoal font-normal">
+                    Thank You, {formData.fullName}
+                  </h3>
+                  <p className="text-sm text-arch-muted max-w-md mx-auto font-sans leading-relaxed">
+                    Your inquiry has been received. Our team from the Nachane office will review your requirements and reach out to you at {formData.phoneNumber}.
+                  </p>
                   <button
                     type="button"
-                    onClick={() => {
-                      setSubmitted(false)
-                      setFormData({
-                        fullName: "",
-                        phoneNumber: "",
-                        email: "",
-                        projectType: "Residential Construction",
-                        projectLocation: "",
-                        message: "",
-                      })
-                    }}
-                    className="px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 border border-slate-700 transition-colors cursor-pointer"
+                    onClick={() => setSubmitted(false)}
+                    className="mt-4 px-6 py-2.5 bg-arch-charcoal text-arch-ivory text-xs uppercase tracking-widest rounded-sm hover:bg-arch-bronze transition-colors cursor-pointer"
                   >
-                    Send Another Message
+                    Submit Another Query
                   </button>
                 </motion.div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {/* Full Name */}
+                  <div className="space-y-1">
+                    <h3 className="font-serif text-2xl text-arch-charcoal font-normal">
+                      Project Enquiry Form
+                    </h3>
+                    <p className="text-xs text-arch-muted font-sans">
+                      Fill in your details below and we will contact you to discuss timeline and site feasibility.
+                    </p>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                        Full Name <span className="text-sky-400">*</span>
+                      <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                        Full Name *
                       </label>
                       <input
                         type="text"
@@ -230,15 +202,14 @@ export const ContactSection: React.FC = () => {
                         required
                         value={formData.fullName}
                         onChange={handleChange}
-                        placeholder="e.g. Ramesh Kadam"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
+                        placeholder="e.g. Ramesh Kulkarni"
+                        className="w-full px-4 py-2.5 bg-arch-ivory border border-arch-border rounded-sm text-sm text-arch-charcoal placeholder:text-arch-muted/50 focus:outline-none focus:border-arch-bronze"
                       />
                     </div>
 
-                    {/* Phone Number */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                        Phone Number <span className="text-sky-400">*</span>
+                      <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                        Phone Number *
                       </label>
                       <input
                         type="tel"
@@ -246,16 +217,15 @@ export const ContactSection: React.FC = () => {
                         required
                         value={formData.phoneNumber}
                         onChange={handleChange}
-                        placeholder="e.g. +91 98XXXXXXXX"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all font-mono"
+                        placeholder="e.g. +91 98220 XXXXX"
+                        className="w-full px-4 py-2.5 bg-arch-ivory border border-arch-border rounded-sm text-sm text-arch-charcoal placeholder:text-arch-muted/50 focus:outline-none focus:border-arch-bronze"
                       />
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {/* Email */}
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                      <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
                         Email Address
                       </label>
                       <input
@@ -263,89 +233,74 @@ export const ContactSection: React.FC = () => {
                         name="email"
                         value={formData.email}
                         onChange={handleChange}
-                        placeholder="e.g. ramesh@example.com"
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
+                        placeholder="yourname@domain.com"
+                        className="w-full px-4 py-2.5 bg-arch-ivory border border-arch-border rounded-sm text-sm text-arch-charcoal placeholder:text-arch-muted/50 focus:outline-none focus:border-arch-bronze"
                       />
                     </div>
 
-                    {/* Project Type */}
                     <div className="space-y-1.5">
-                      <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                        Project Type <span className="text-sky-400">*</span>
+                      <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                        Service Category
                       </label>
                       <select
                         name="projectType"
                         value={formData.projectType}
                         onChange={handleChange}
-                        className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
+                        className="w-full px-4 py-2.5 bg-arch-ivory border border-arch-border rounded-sm text-sm text-arch-charcoal focus:outline-none focus:border-arch-bronze"
                       >
-                        <option value="Building Construction Services">Building Construction Services</option>
-                        <option value="Property Construction Contractors">Property Construction Contractors</option>
-                        <option value="Residential Builders">Residential Builders</option>
-                        <option value="Commercial Building Construction">Commercial Building Construction</option>
-                        <option value="Building Erection Services">Building Erection Services</option>
-                        <option value="Building Development Services">Building Development Services</option>
-                        <option value="General Building Contractors">General Building Contractors</option>
-                        <option value="Construction Services Provider">Construction Services Provider</option>
-                        <option value="Home Construction Contractors">Home Construction Contractors</option>
-                        <option value="Real Estate Construction">Real Estate Construction</option>
-                        <option value="Structure Building Services">Structure Building Services</option>
-                        <option value="Temple Construction Services">Temple Construction Services</option>
+                        {ALL_SERVICES_LIST.map((srv) => (
+                          <option key={srv.id} value={srv.title}>
+                            {srv.title}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
 
-                  {/* Project Location in Ratnagiri */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                      Project Location (Plot / Area in Ratnagiri) <span className="text-sky-400">*</span>
+                    <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                      Site / Plot Location in Ratnagiri
                     </label>
                     <input
                       type="text"
                       name="projectLocation"
-                      required
                       value={formData.projectLocation}
                       onChange={handleChange}
-                      placeholder="e.g. Nachane / Kuwarbav / Shivaji Nagar / Mirjole"
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
+                      placeholder="e.g. Nachane, Kuwarbav, Hatkhamba, etc."
+                      className="w-full px-4 py-2.5 bg-arch-ivory border border-arch-border rounded-sm text-sm text-arch-charcoal placeholder:text-arch-muted/50 focus:outline-none focus:border-arch-bronze"
                     />
                   </div>
 
-                  {/* Message */}
                   <div className="space-y-1.5">
-                    <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                      Message / Requirement Details
+                    <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                      Project Notes / Requirement
                     </label>
                     <textarea
                       name="message"
                       rows={4}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Tell us about your plot size, proposed built-up area, timeline, or any specific architectural preferences..."
-                      className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white placeholder-slate-600 focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all font-sans"
+                      placeholder="Tell us about your proposed construction or property requirement..."
+                      className="w-full px-4 py-2.5 bg-arch-ivory border border-arch-border rounded-sm text-sm text-arch-charcoal placeholder:text-arch-muted/50 focus:outline-none focus:border-arch-bronze resize-none"
                     />
                   </div>
 
-                  {/* Submit CTA */}
                   <button
                     type="submit"
                     disabled={loading}
-                    className="w-full py-4 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-500 hover:to-sky-400 shadow-xl shadow-sky-950/50 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95 disabled:opacity-50"
+                    className="w-full py-3.5 bg-arch-charcoal hover:bg-arch-bronze text-arch-ivory text-xs uppercase tracking-widest font-medium transition-colors rounded-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                   >
-                    <Send className="w-4 h-4" />
-                    <span>{loading ? "Sending Enquiry..." : "Send Enquiry"}</span>
+                    <span>{loading ? "Submitting..." : "Send Project Enquiry"}</span>
+                    <Send className="w-3.5 h-3.5" />
                   </button>
 
-                  <div className="text-center">
-                    <span className="text-[11px] font-sans text-slate-500">
-                      Your information is kept confidential. We will never share your contact details.
-                    </span>
-                  </div>
+                  <p className="text-[11px] text-arch-muted text-center font-sans">
+                    Your contact information will only be used by Nirman Infrastructure to respond to your project request.
+                  </p>
 
                 </form>
               )}
-
-            </div>
+            </AnimatePresence>
 
           </div>
 

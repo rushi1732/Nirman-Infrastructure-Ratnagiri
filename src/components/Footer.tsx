@@ -1,6 +1,6 @@
 import React from "react"
-import { Phone, Mail, MapPin, ExternalLink, ArrowUp, MessageSquare, Building2 } from "lucide-react"
-import { COMPANY_INFO, SERVICES_DATA } from "@/data/nirmanData"
+import { Phone, Mail, MapPin, ExternalLink, ArrowUp, MessageSquare } from "lucide-react"
+import { COMPANY_INFO, ALL_SERVICES_LIST } from "@/data/nirmanData"
 
 export const Footer: React.FC = () => {
   const scrollToTop = () => {
@@ -8,184 +8,147 @@ export const Footer: React.FC = () => {
   }
 
   return (
-    <footer className="bg-[#060a12] border-t border-slate-800 text-slate-400 relative overflow-hidden">
-      
-      {/* Blueprint Pattern */}
-      <div className="absolute inset-0 bg-blueprint-grid opacity-15 pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 pb-12 relative z-10">
+    <footer className="bg-arch-charcoal border-t border-[#2A2926] text-arch-stone/80 relative overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-12">
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-slate-800/80">
+        {/* Top Massive Architectural Brand Title */}
+        <div className="pb-16 border-b border-[#2E2D2A]">
+          <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-8">
+            <div className="space-y-4">
+              <div className="bg-white rounded-sm p-3 w-fit shadow-md inline-block">
+                <img
+                  src="/images/nirman-logo.png"
+                  alt="Nirman Infrastructure Ratnagiri"
+                  className="h-10 sm:h-12 w-auto object-contain"
+                />
+              </div>
+              <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl text-arch-ivory font-normal tracking-tight">
+                Nirman Infrastructure
+              </h2>
+              <p className="text-xs uppercase tracking-[0.25em] text-arch-bronze font-mono">
+                Builders & Property Development • Ratnagiri, Maharashtra
+              </p>
+            </div>
+
+            <button
+              onClick={scrollToTop}
+              className="inline-flex items-center gap-2 px-5 py-3 border border-[#33322E] bg-[#22211F] hover:bg-arch-bronze hover:text-arch-ivory text-xs uppercase tracking-widest text-arch-ivory transition-colors rounded-sm cursor-pointer self-start lg:self-auto"
+            >
+              <span>Back to Top</span>
+              <ArrowUp className="w-3.5 h-3.5" />
+            </button>
+          </div>
+        </div>
+
+        {/* 4 Architectural Columns */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 py-16 border-b border-[#2E2D2A]">
           
-          {/* Brand Col (3 Cols) */}
-          <div className="lg:col-span-3 space-y-6">
-            
-            {/* Logo in clean high-contrast container */}
-            <div className="bg-white rounded-xl p-2.5 w-fit shadow-md border border-slate-200/40">
-              <img
-                src="/images/nirman-logo.png"
-                alt="Nirman Infrastructure Ratnagiri"
-                className="h-10 sm:h-12 w-auto object-contain"
-              />
-            </div>
-
-            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-sans max-w-sm">
-              Nirman Infrastructure Ratnagiri is a premier real estate builder and construction company dedicated to creating enduring residential, commercial, and turnkey landmarks across the Konkan region.
+          {/* Col 1: About & Positioning (4 Cols) */}
+          <div className="lg:col-span-4 space-y-5">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-mono text-arch-ivory font-semibold">
+              About the Firm
+            </h4>
+            <p className="text-xs sm:text-sm text-arch-stone/80 leading-relaxed font-sans max-w-sm">
+              Nirman Infrastructure provides organized building execution, property construction, residential home building, and commercial development across the Ratnagiri district.
             </p>
-
-            <div className="space-y-1 text-xs font-mono text-slate-400">
-              <div>Builders & Real Estate Developers</div>
-              <div className="text-sky-400">Nachane, Ratnagiri, Maharashtra</div>
+            <div className="pt-2 space-y-1.5 text-xs font-mono text-arch-stone/60">
+              <div>Office: Indradhanu, Behind CSM Stadium</div>
+              <div className="text-arch-bronze">SV Road, Nachane, Ratnagiri 415612</div>
             </div>
-
           </div>
 
-          {/* Quick Navigation (2 Cols) */}
+          {/* Col 2: Navigation Links (2 Cols) */}
           <div className="lg:col-span-2 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-mono text-arch-ivory font-semibold">
               Navigation
             </h4>
-            <ul className="space-y-2 text-xs font-sans">
-              <li>
-                <a href="#hero" className="hover:text-white transition-colors">Home</a>
-              </li>
-              <li>
-                <a href="#about" className="hover:text-white transition-colors">About Us</a>
-              </li>
-              <li>
-                <a href="#services" className="hover:text-white transition-colors">Services</a>
-              </li>
-              <li>
-                <a href="#projects" className="hover:text-white transition-colors">Featured Projects</a>
-              </li>
-              <li>
-                <a href="#model-3d" className="hover:text-white transition-colors">3D Model</a>
-              </li>
-              <li>
-                <a href="#why-us" className="hover:text-white transition-colors">Why Choose Us</a>
-              </li>
-              <li>
-                <a href="#process" className="hover:text-white transition-colors">Construction Process</a>
-              </li>
-              <li>
-                <a href="#estimator" className="hover:text-white transition-colors">Cost Estimator</a>
-              </li>
-              <li>
-                <a href="#gallery" className="hover:text-white transition-colors">Gallery</a>
-              </li>
-              <li>
-                <a href="#faq" className="hover:text-white transition-colors">FAQs</a>
-              </li>
-              <li>
-                <a href="#contact" className="hover:text-white transition-colors">Contact</a>
-              </li>
+            <ul className="space-y-2.5 text-xs font-sans">
+              <li><a href="#about" className="hover:text-arch-ivory transition-colors">About Us</a></li>
+              <li><a href="#services" className="hover:text-arch-ivory transition-colors">Our Services</a></li>
+              <li><a href="#projects" className="hover:text-arch-ivory transition-colors">Project Portfolio</a></li>
+              <li><a href="#why-us" className="hover:text-arch-ivory transition-colors">Core Principles</a></li>
+              <li><a href="#process" className="hover:text-arch-ivory transition-colors">6-Stage Process</a></li>
+              <li><a href="#estimator" className="hover:text-arch-ivory transition-colors">Cost Estimator</a></li>
+              <li><a href="#contact" className="hover:text-arch-ivory transition-colors">Contact Office</a></li>
             </ul>
           </div>
 
-          {/* Services Offered (4 Cols) */}
-          <div className="lg:col-span-4 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
-              Construction Services (12 Categories)
+          {/* Col 3: Business Services (3 Cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-xs uppercase tracking-[0.2em] font-mono text-arch-ivory font-semibold">
+              Construction Services
             </h4>
-            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-xs font-sans">
-              {SERVICES_DATA.map((s) => (
+            <ul className="space-y-2 text-xs font-sans">
+              {ALL_SERVICES_LIST.slice(0, 7).map((s) => (
                 <li key={s.id}>
-                  <a href="#services" className="hover:text-white transition-colors block truncate" title={s.title}>
-                    • {s.title}
+                  <a href="#services" className="hover:text-arch-ivory transition-colors truncate block">
+                    {s.title}
                   </a>
                 </li>
               ))}
             </ul>
-            <div className="pt-2">
-              <a href="#estimator" className="hover:text-white transition-colors text-xs text-sky-400 font-mono inline-flex items-center gap-1">
-                <span>Interactive Cost Estimator</span> →
-              </a>
-            </div>
           </div>
 
-          {/* Contact Details & Links (3 Cols) */}
+          {/* Col 4: Contact & Direct Inquiries (3 Cols) */}
           <div className="lg:col-span-3 space-y-4">
-            <h4 className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
-              Ratnagiri Office
+            <h4 className="text-xs uppercase tracking-[0.2em] font-mono text-arch-ivory font-semibold">
+              Direct Contact
             </h4>
-            
             <div className="space-y-3 text-xs font-sans">
-              <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-sky-400 flex-shrink-0 mt-0.5" />
-                <p className="leading-relaxed text-slate-300">
-                  {COMPANY_INFO.address.line1}, {COMPANY_INFO.address.line2}, {COMPANY_INFO.address.locality}, {COMPANY_INFO.address.city}, Maharashtra {COMPANY_INFO.address.pincode}
-                </p>
-              </div>
-
-              <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <div>
+                <span className="text-[11px] font-mono text-arch-stone/60 uppercase block">Phone Inquiries</span>
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="font-mono text-sky-400 hover:text-sky-300 font-semibold"
+                  className="text-arch-ivory hover:text-arch-bronze text-sm font-medium transition-colors block mt-0.5"
                 >
                   {COMPANY_INFO.phone}
                 </a>
               </div>
 
-              <div className="flex items-center gap-2.5">
-                <MessageSquare className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+              <div>
+                <span className="text-[11px] font-mono text-arch-stone/60 uppercase block">Email</span>
                 <a
-                  href={`https://wa.me/${COMPANY_INFO.whatsapp}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-emerald-400 hover:text-emerald-300"
+                  href={`mailto:${COMPANY_INFO.email}`}
+                  className="text-arch-ivory hover:text-arch-bronze transition-colors block mt-0.5"
                 >
-                  WhatsApp Direct Support
+                  {COMPANY_INFO.email}
                 </a>
+              </div>
+
+              <div>
+                <span className="text-[11px] font-mono text-arch-stone/60 uppercase block">Hours</span>
+                <span className="text-arch-stone/90 block mt-0.5">
+                  {COMPANY_INFO.hours.days}: {COMPANY_INFO.hours.timings}
+                </span>
               </div>
 
               <div className="pt-2">
                 <a
-                  href={COMPANY_INFO.googleMapsUrl}
+                  href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Hello%20Nirman%20Infrastructure,%20I%20would%20like%20to%20discuss%20a%20construction%20project.`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs text-sky-400 hover:text-sky-300 underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 text-xs text-arch-bronze hover:underline"
                 >
-                  <span>View on Google Maps</span>
-                  <ExternalLink className="w-3 h-3" />
+                  <MessageSquare className="w-3.5 h-3.5" />
+                  <span>Chat on WhatsApp</span>
                 </a>
               </div>
             </div>
-
-            {/* Social media placeholders */}
-            <div className="pt-2 space-y-2">
-              <span className="text-[11px] font-mono text-slate-500 uppercase tracking-wider block">
-                Connect & Updates
-              </span>
-              <div className="flex items-center gap-2 text-xs">
-                <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">Facebook</span>
-                <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">Instagram</span>
-                <span className="px-2.5 py-1 rounded-lg bg-slate-900 border border-slate-800 text-slate-300">LinkedIn</span>
-              </div>
-            </div>
-
           </div>
 
         </div>
 
-        {/* Bottom Copyright & Back to Top Row */}
-        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-sans text-slate-500">
-          <div>
-            © Nirman Infrastructure Ratnagiri. All Rights Reserved.
-          </div>
-
-          <div className="flex items-center gap-6">
-            <span className="hover:text-slate-400 transition-colors">Privacy Policy</span>
-            <span className="hover:text-slate-400 transition-colors">Terms of Service</span>
-            <button
-              type="button"
-              onClick={scrollToTop}
-              className="p-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-slate-300 hover:text-white border border-slate-800 transition-colors flex items-center gap-1 cursor-pointer"
-              title="Return to top"
-            >
-              <ArrowUp className="w-3.5 h-3.5" />
-              <span>Back to Top</span>
-            </button>
+        {/* Bottom Bar */}
+        <div className="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-arch-stone/60 gap-4">
+          <p className="font-sans text-center sm:text-left">
+            © {new Date().getFullYear()} Nirman Infrastructure Ratnagiri. All Rights Reserved. Professional Real Estate & Construction Services.
+          </p>
+          <div className="flex items-center gap-4 text-[11px] font-mono">
+            <span>Nachane, Ratnagiri</span>
+            <span>•</span>
+            <a href={COMPANY_INFO.googleMapsUrl} target="_blank" rel="noopener noreferrer" className="hover:text-arch-ivory">
+              Google Maps
+            </a>
           </div>
         </div>
 

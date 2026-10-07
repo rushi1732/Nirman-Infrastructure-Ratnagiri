@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react"
-import { Calculator, ArrowRight, CheckCircle2, Clock } from "lucide-react"
+import { Calculator, ArrowRight, Check, Clock } from "lucide-react"
 
 interface EstimatorProps {
   onOpenConsultationWithData: (data: { area: number; type: string; estimatedCost: string }) => void
@@ -54,7 +54,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
   }, [area, currentTier.ratePerSqFt])
 
   const calculatedTimeline = useMemo(() => {
-    return `${currentTier.timelineMonths(area)} - ${currentTier.timelineMonths(area) + 3} Months`
+    return `${currentTier.timelineMonths(area)} – ${currentTier.timelineMonths(area) + 3} Months`
   }, [area, currentTier])
 
   const handleRequestQuote = () => {
@@ -66,28 +66,26 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
   }
 
   return (
-    <section id="estimator" className="py-24 bg-[#080d17] relative overflow-hidden border-t border-slate-800/80">
-      
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="estimator" className="py-24 sm:py-32 bg-arch-stone/30 border-t border-arch-border">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-sky-800/60 text-sky-400 text-xs font-mono uppercase tracking-wider">
-            <Calculator className="w-3.5 h-3.5" />
-            <span>Interactive Project Estimator</span>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div className="max-w-2xl space-y-3">
+            <span className="text-xs uppercase tracking-[0.25em] text-arch-bronze font-semibold">
+              Project Feasibility
+            </span>
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-arch-charcoal tracking-tight">
+              Preliminary Construction Estimator
+            </h2>
           </div>
-
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            Estimate Your Construction in Ratnagiri
-          </h2>
-
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
-            Calculate preliminary budgetary requirements and estimated project duration based on your intended built-up area and construction scope.
+          <p className="text-arch-muted text-sm sm:text-base max-w-md leading-relaxed font-sans">
+            Calculate preliminary budgetary requirements and estimated project duration based on your intended built-up area and construction scope in Ratnagiri.
           </p>
         </div>
 
         {/* Main Estimator Box */}
-        <div className="rounded-3xl border border-slate-800 bg-slate-900/80 p-6 sm:p-10 lg:p-12 shadow-2xl">
+        <div className="bg-arch-ivory border border-arch-border p-6 sm:p-10 lg:p-12 rounded-sm shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Controls (7 Cols) */}
@@ -95,10 +93,10 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
               
               {/* 1. Category Selector */}
               <div className="space-y-3">
-                <label className="text-xs font-mono uppercase tracking-wider text-slate-400 block">
-                  Select Construction Service Category
+                <label className="text-xs font-mono uppercase tracking-wider text-arch-muted block">
+                  Select Construction Scope
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   {(["turnkey", "premium", "standard", "commercial"] as const).map((tierKey) => {
                     const t = tierConfigs[tierKey]
                     const isSelected = specTier === tierKey
@@ -108,19 +106,19 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                         key={tierKey}
                         type="button"
                         onClick={() => setSpecTier(tierKey)}
-                        className={`p-4 rounded-xl text-left border transition-all cursor-pointer ${
+                        className={`p-4 rounded-sm text-left border transition-all cursor-pointer ${
                           isSelected
-                            ? "bg-slate-800 border-sky-500 shadow-md shadow-sky-950/40"
-                            : "bg-slate-950/60 border-slate-800 hover:bg-slate-800/50 text-slate-400"
+                            ? "bg-arch-stone/50 border-arch-bronze shadow-sm"
+                            : "bg-arch-ivory border-arch-border hover:border-arch-bronze/40 text-arch-muted"
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className={`text-xs font-display font-bold ${isSelected ? "text-white" : "text-slate-300"}`}>
+                          <span className={`text-xs font-serif font-medium ${isSelected ? "text-arch-charcoal" : "text-arch-muted"}`}>
                             {t.name}
                           </span>
-                          {isSelected && <span className="w-2 h-2 rounded-full bg-emerald-400" />}
+                          {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-arch-bronze" />}
                         </div>
-                        <span className="text-[11px] font-mono text-sky-400 block">
+                        <span className="text-[11px] font-mono text-arch-bronze block">
                           ~₹{t.ratePerSqFt} / sq.ft indicative
                         </span>
                       </button>
@@ -132,10 +130,10 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
               {/* 2. Built-up Area Slider */}
               <div className="space-y-4">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-mono uppercase tracking-wider text-slate-400">
+                  <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
                     Proposed Built-up Area (Sq.Ft)
                   </label>
-                  <span className="text-lg font-mono font-bold text-sky-400 px-3 py-1 rounded-lg bg-sky-950 border border-sky-800/60">
+                  <span className="text-base font-serif font-medium text-arch-charcoal px-3 py-1 bg-arch-stone rounded-sm border border-arch-border">
                     {area.toLocaleString()} sq.ft
                   </span>
                 </div>
@@ -144,30 +142,28 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                   type="range"
                   min="600"
                   max="10000"
-                  step="100"
+                  step="50"
                   value={area}
                   onChange={(e) => setArea(Number(e.target.value))}
-                  className="w-full h-2.5 bg-slate-950 rounded-lg appearance-none cursor-pointer accent-sky-500 border border-slate-800"
+                  className="w-full h-1.5 bg-arch-stone rounded-sm appearance-none cursor-pointer accent-arch-bronze"
                 />
 
-                <div className="flex justify-between text-[11px] font-mono text-slate-500">
-                  <span>600 sq.ft (Home)</span>
-                  <span>3,000 sq.ft</span>
-                  <span>6,000 sq.ft</span>
-                  <span>10,000+ sq.ft (Commercial)</span>
+                <div className="flex items-center justify-between text-[11px] text-arch-muted font-mono">
+                  <span>600 sq.ft (Single Floor)</span>
+                  <span>10,000+ sq.ft (Multi-Storey)</span>
                 </div>
               </div>
 
-              {/* Tier Description & Features */}
-              <div className="p-4 rounded-2xl bg-slate-950/70 border border-slate-800 space-y-3">
-                <p className="text-xs text-slate-300 leading-relaxed font-sans">
-                  {currentTier.desc}
-                </p>
-                <div className="grid grid-cols-2 gap-2 pt-2 border-t border-slate-800">
-                  {currentTier.features.map((feat, idx) => (
-                    <div key={idx} className="flex items-center gap-1.5 text-xs text-slate-300">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400 flex-shrink-0" />
-                      <span>{feat}</span>
+              {/* 3. Included Scope Checklist */}
+              <div className="pt-2">
+                <span className="text-xs font-mono uppercase tracking-wider text-arch-muted block mb-3">
+                  Scope Highlights Included
+                </span>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                  {currentTier.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center gap-2 text-xs text-arch-charcoal font-sans">
+                      <Check className="w-3.5 h-3.5 text-arch-bronze flex-shrink-0" />
+                      <span>{feature}</span>
                     </div>
                   ))}
                 </div>
@@ -175,57 +171,44 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
 
             </div>
 
-            {/* Right Summary Display (5 Cols) */}
-            <div className="lg:col-span-5">
-              <div className="p-8 rounded-2xl bg-gradient-to-b from-slate-900 to-slate-950 border border-sky-900/50 shadow-2xl space-y-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-32 h-32 bg-sky-500/10 rounded-full blur-2xl pointer-events-none" />
-
-                <div className="space-y-1">
-                  <span className="text-xs font-mono uppercase tracking-wider text-slate-400">
-                    Preliminary Cost Projection
-                  </span>
-                  <div className="text-3xl sm:text-4xl font-display font-extrabold text-white flex items-center gap-1 text-sky-400">
-                    {calculatedCost}
-                  </div>
-                  <span className="text-[11px] font-sans text-slate-400 block">
-                    Estimated indicative cost based on {area.toLocaleString()} sq.ft
-                  </span>
+            {/* Right Result Card (5 Cols) */}
+            <div className="lg:col-span-5 bg-arch-charcoal text-arch-ivory p-8 sm:p-10 rounded-sm border border-[#2E2D2A] space-y-6">
+              
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-arch-bronze">
+                  Indicative Project Estimate
+                </span>
+                <div className="text-3xl sm:text-4xl font-serif text-arch-ivory font-normal">
+                  {calculatedCost}
                 </div>
-
-                {/* Timeline Box */}
-                <div className="p-4 rounded-xl bg-slate-900 border border-slate-800 flex items-center justify-between">
-                  <div className="flex items-center gap-2.5">
-                    <Clock className="w-5 h-5 text-amber-400" />
-                    <div>
-                      <span className="text-[10px] font-mono uppercase tracking-wider text-slate-400 block">
-                        Estimated Duration
-                      </span>
-                      <span className="text-sm font-semibold text-white">
-                        {calculatedTimeline}
-                      </span>
-                    </div>
-                  </div>
-                  <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800/40">
-                    Phased Work
-                  </span>
+                <div className="text-xs text-arch-stone/60 font-sans">
+                  Based on ~₹{currentTier.ratePerSqFt} / sq.ft for {area.toLocaleString()} sq.ft
                 </div>
-
-                <div className="space-y-2 text-xs text-slate-400 font-sans">
-                  <p>
-                    * Note: This estimator provides indicative guidance. Actual costs depend on site ground conditions, custom layout details, and chosen specifications.
-                  </p>
-                </div>
-
-                {/* Lock In Quote CTA */}
-                <button
-                  type="button"
-                  onClick={handleRequestQuote}
-                  className="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-sky-600 to-emerald-600 hover:from-sky-500 hover:to-emerald-500 shadow-xl shadow-sky-950/60 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
-                >
-                  <span>Request Consultation For This Estimate</span>
-                  <ArrowRight className="w-4 h-4" />
-                </button>
               </div>
+
+              <div className="border-t border-[#2F2E2B] pt-4 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs text-arch-stone/80">
+                  <Clock className="w-4 h-4 text-arch-bronze" />
+                  <span>Estimated Schedule</span>
+                </div>
+                <span className="font-serif text-sm text-arch-ivory font-medium">
+                  {calculatedTimeline}
+                </span>
+              </div>
+
+              <div className="text-[11px] text-arch-stone/60 leading-relaxed font-sans border-t border-[#2F2E2B] pt-4">
+                * Note: Indicative estimate for preliminary planning. Final pricing depends on structural drawings, soil profile, foundation depth, and specified interior materials.
+              </div>
+
+              <button
+                type="button"
+                onClick={handleRequestQuote}
+                className="w-full py-3.5 px-6 bg-arch-bronze hover:bg-arch-bronze/90 text-arch-ivory text-xs font-medium tracking-widest uppercase transition-colors rounded-sm flex items-center justify-center gap-2 cursor-pointer"
+              >
+                <span>Request Itemized Site Estimate</span>
+                <ArrowRight className="w-3.5 h-3.5" />
+              </button>
+
             </div>
 
           </div>

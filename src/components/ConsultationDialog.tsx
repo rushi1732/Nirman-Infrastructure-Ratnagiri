@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { X, CheckCircle2, Phone, MessageSquare, Send, Building2, MapPin } from "lucide-react"
-import { COMPANY_INFO } from "@/data/nirmanData"
+import { X, Check, Phone, MessageSquare, Send } from "lucide-react"
+import { COMPANY_INFO, ALL_SERVICES_LIST } from "@/data/nirmanData"
 
 interface ConsultationDialogProps {
   open: boolean
@@ -20,8 +20,8 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
     name: "",
     phone: "",
     email: "",
-    projectType: initialProjectType || "Residential Construction",
-    location: "",
+    projectType: initialProjectType || "Building Construction Services",
+    location: "Ratnagiri",
     notes: "",
   })
 
@@ -50,7 +50,7 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
     setTimeout(() => {
       setLoading(false)
       setSubmitted(true)
-    }, 700)
+    }, 600)
   }
 
   const handleClose = () => {
@@ -59,94 +59,77 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md">
+    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 sm:p-6">
       <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
+        initial={{ opacity: 0, scale: 0.96 }}
         animate={{ opacity: 1, scale: 1 }}
-        exit={{ opacity: 0, scale: 0.95 }}
-        className="bg-slate-900 border border-slate-800 rounded-3xl max-w-xl w-full p-6 sm:p-8 shadow-2xl relative overflow-hidden"
+        exit={{ opacity: 0, scale: 0.96 }}
+        className="bg-arch-ivory border border-arch-border rounded-sm max-w-xl w-full p-6 sm:p-8 shadow-2xl relative text-arch-charcoal"
       >
-        {/* Subtle accent bar */}
-        <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 via-emerald-500 to-sky-400" />
-
-        {/* Close Button */}
         <button
           type="button"
           onClick={handleClose}
-          className="absolute top-5 right-5 p-2 rounded-xl bg-slate-800 text-slate-400 hover:text-white transition-colors cursor-pointer"
+          aria-label="Close dialog"
+          className="absolute top-5 right-5 text-arch-muted hover:text-arch-charcoal p-1 transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
-        {submitted ? (
-          <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-emerald-950 border border-emerald-600/50 text-emerald-400 flex items-center justify-center mx-auto">
-              <CheckCircle2 className="w-8 h-8" />
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="text-2xl font-display font-bold text-white">
+        <AnimatePresence mode="wait">
+          {submitted ? (
+            <motion.div
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="py-10 text-center space-y-4"
+            >
+              <div className="w-12 h-12 bg-arch-stone border border-arch-border rounded-full mx-auto flex items-center justify-center text-arch-bronze">
+                <Check className="w-6 h-6" />
+              </div>
+              <h3 className="font-serif text-2xl text-arch-charcoal font-normal">
                 Consultation Request Received
               </h3>
-              <p className="text-sm text-emerald-200 font-sans max-w-md mx-auto leading-relaxed">
-                Thank you for contacting Nirman Infrastructure. Our team will get in touch with you shortly.
+              <p className="text-sm text-arch-muted font-sans max-w-md mx-auto leading-relaxed">
+                Thank you, {formData.name}. Our engineering and planning team will contact you shortly on {formData.phone} to discuss your requirements.
               </p>
-            </div>
-
-            <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-              <a
-                href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
-                  `Hello Nirman Infrastructure, I just submitted an enquiry for ${formData.projectType}.`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-semibold text-xs flex items-center justify-center gap-2"
-              >
-                <MessageSquare className="w-4 h-4" />
-                <span>Notify via WhatsApp</span>
-              </a>
-
               <button
                 type="button"
                 onClick={handleClose}
-                className="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-semibold text-xs transition-colors cursor-pointer"
+                className="mt-4 px-6 py-2.5 bg-arch-charcoal hover:bg-arch-bronze text-arch-ivory text-xs uppercase tracking-widest rounded-sm transition-colors cursor-pointer"
               >
-                Done
+                Close Window
               </button>
-            </div>
-          </div>
-        ) : (
-          <div className="space-y-6">
-            <div className="space-y-1">
-              <span className="text-[11px] font-mono uppercase tracking-wider text-sky-400 font-semibold">
-                Nirman Infrastructure Ratnagiri
-              </span>
-              <h3 className="text-2xl font-display font-bold text-white">
-                Book a Free Consultation
-              </h3>
-              <p className="text-xs text-slate-400 font-sans">
-                Schedule a site assessment or technical consultation with our engineering team.
-              </p>
-            </div>
+            </motion.div>
+          ) : (
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="space-y-1">
+                <span className="text-[11px] font-mono uppercase tracking-widest text-arch-bronze">
+                  Nirman Infrastructure Ratnagiri
+                </span>
+                <h3 className="font-serif text-2xl text-arch-charcoal font-normal">
+                  Schedule Project Consultation
+                </h3>
+                <p className="text-xs text-arch-muted font-sans">
+                  Direct engagement with our engineering and construction team at our Nachane office.
+                </p>
+              </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
-                  <label className="text-xs font-mono uppercase text-slate-400">
-                    Your Name *
+                  <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                    Full Name *
                   </label>
                   <input
                     type="text"
                     required
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="Full Name"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500"
+                    placeholder="e.g. Anand Shinde"
+                    className="w-full px-3.5 py-2 bg-white border border-arch-border rounded-sm text-sm text-arch-charcoal focus:outline-none focus:border-arch-bronze"
                   />
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-mono uppercase text-slate-400">
+                  <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
                     Phone Number *
                   </label>
                   <input
@@ -154,61 +137,54 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
                     required
                     value={formData.phone}
                     onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                    placeholder="+91 98XXXXXXXX"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500 font-mono"
+                    placeholder="+91 98220 XXXXX"
+                    className="w-full px-3.5 py-2 bg-white border border-arch-border rounded-sm text-sm text-arch-charcoal focus:outline-none focus:border-arch-bronze"
                   />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 <div className="space-y-1">
-                  <label className="text-xs font-mono uppercase text-slate-400">
-                    Project Type
+                  <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                    Service Scope
                   </label>
                   <select
                     value={formData.projectType}
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500"
+                    className="w-full px-3.5 py-2 bg-white border border-arch-border rounded-sm text-sm text-arch-charcoal focus:outline-none focus:border-arch-bronze"
                   >
-                    <option value="Building Construction Services">Building Construction Services</option>
-                    <option value="Property Construction Contractors">Property Construction Contractors</option>
-                    <option value="Residential Builders">Residential Builders</option>
-                    <option value="Commercial Building Construction">Commercial Building Construction</option>
-                    <option value="Building Erection Services">Building Erection Services</option>
-                    <option value="Building Development Services">Building Development Services</option>
-                    <option value="General Building Contractors">General Building Contractors</option>
-                    <option value="Construction Services Provider">Construction Services Provider</option>
-                    <option value="Home Construction Contractors">Home Construction Contractors</option>
-                    <option value="Real Estate Construction">Real Estate Construction</option>
-                    <option value="Structure Building Services">Structure Building Services</option>
-                    <option value="Temple Construction Services">Temple Construction Services</option>
+                    {ALL_SERVICES_LIST.map((srv) => (
+                      <option key={srv.id} value={srv.title}>
+                        {srv.title}
+                      </option>
+                    ))}
                   </select>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-xs font-mono uppercase text-slate-400">
-                    Location in Ratnagiri
+                  <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                    Plot / Site Location
                   </label>
                   <input
                     type="text"
                     value={formData.location}
                     onChange={(e) => setFormData({ ...formData, location: e.target.value })}
-                    placeholder="e.g. Nachane / Kuwarbav"
-                    className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500"
+                    placeholder="e.g. Nachane, Ratnagiri"
+                    className="w-full px-3.5 py-2 bg-white border border-arch-border rounded-sm text-sm text-arch-charcoal focus:outline-none focus:border-arch-bronze"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-mono uppercase text-slate-400">
-                  Project Notes / Specifications
+                <label className="text-xs font-mono uppercase tracking-wider text-arch-muted">
+                  Project Notes & Timeline
                 </label>
                 <textarea
                   rows={3}
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
-                  placeholder="Plot dimensions, estimated timeline, or requirements..."
-                  className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500 font-sans"
+                  placeholder="Share details regarding plot area, proposed built-up floors, or key questions..."
+                  className="w-full px-3.5 py-2 bg-white border border-arch-border rounded-sm text-sm text-arch-charcoal focus:outline-none focus:border-arch-bronze resize-none"
                 />
               </div>
 
@@ -216,23 +192,23 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
                 <button
                   type="submit"
                   disabled={loading}
-                  className="w-full sm:flex-1 py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-500 hover:to-sky-400 shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
+                  className="w-full sm:w-auto flex-1 py-3 bg-arch-charcoal hover:bg-arch-bronze text-arch-ivory text-xs uppercase tracking-widest font-medium transition-colors rounded-sm flex items-center justify-center gap-2 cursor-pointer disabled:opacity-50"
                 >
-                  <Send className="w-4 h-4" />
-                  <span>{loading ? "Submitting..." : "Submit Consultation Request"}</span>
+                  <span>{loading ? "Scheduling..." : "Request Consultation"}</span>
+                  <Send className="w-3.5 h-3.5" />
                 </button>
 
                 <a
                   href={`tel:${COMPANY_INFO.phoneRaw}`}
-                  className="w-full sm:w-auto px-4 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs flex items-center justify-center gap-2 border border-slate-700 transition-colors"
+                  className="w-full sm:w-auto px-4 py-3 border border-arch-border hover:border-arch-bronze text-arch-charcoal text-xs font-medium rounded-sm flex items-center justify-center gap-2 transition-colors"
                 >
-                  <Phone className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Call Now</span>
+                  <Phone className="w-3.5 h-3.5 text-arch-bronze" />
+                  <span>Call {COMPANY_INFO.phone}</span>
                 </a>
               </div>
             </form>
-          </div>
-        )}
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   )

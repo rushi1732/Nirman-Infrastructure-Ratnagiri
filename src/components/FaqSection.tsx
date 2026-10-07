@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { HelpCircle, Phone, MessageSquare, ArrowRight } from "lucide-react"
+import { Phone, ArrowRight } from "lucide-react"
 import { FAQS_DATA, COMPANY_INFO } from "@/data/nirmanData"
 import { AccordionItem } from "@/components/ui/accordion"
 
@@ -15,28 +15,26 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenConsultation }) =>
   }
 
   return (
-    <section id="faq" className="py-24 bg-[#080d17] relative overflow-hidden border-t border-slate-800/80">
-      
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="faq" className="py-24 sm:py-32 bg-arch-stone/20 border-t border-arch-border">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col items-center text-center mb-16 space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-sky-800/60 text-sky-400 text-xs font-mono uppercase tracking-wider">
-            <HelpCircle className="w-3.5 h-3.5" />
-            <span>Frequently Asked Questions</span>
-          </div>
+        <div className="flex flex-col items-center text-center mb-16 space-y-3">
+          <span className="text-xs uppercase tracking-[0.25em] text-arch-bronze font-semibold">
+            Common Inquiries
+          </span>
 
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
-            Clear Answers for Your Construction Questions
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-normal text-arch-charcoal tracking-tight">
+            Frequently Asked Questions
           </h2>
 
-          <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans max-w-2xl">
-            Everything you need to know about building, turnkey contracts, approvals, and climate-resilient engineering in Ratnagiri.
+          <p className="text-sm sm:text-base text-arch-muted leading-relaxed font-sans max-w-2xl">
+            Clear insights into construction workflows, site planning, regulatory approvals, and building practices in Ratnagiri.
           </p>
         </div>
 
         {/* Accordion List */}
-        <div className="space-y-4">
+        <div className="space-y-3">
           {FAQS_DATA.map((faq, index) => (
             <AccordionItem
               key={index}
@@ -46,7 +44,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenConsultation }) =>
               isOpen={openIndex === index}
               onToggle={() => handleToggle(index)}
             >
-              <p className="font-sans leading-relaxed text-slate-300 text-sm sm:text-base">
+              <p className="font-sans leading-relaxed text-arch-muted text-sm sm:text-base">
                 {faq.answer}
               </p>
             </AccordionItem>
@@ -54,30 +52,29 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenConsultation }) =>
         </div>
 
         {/* Have More Questions Banner */}
-        <div className="mt-14 p-6 sm:p-8 rounded-2xl bg-slate-900/80 border border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xl">
+        <div className="mt-14 p-6 sm:p-8 rounded-sm bg-arch-ivory border border-arch-border flex flex-col sm:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="space-y-1 text-center sm:text-left">
-            <h4 className="text-base sm:text-lg font-display font-bold text-white">
-              Have a specific architectural query?
+            <h4 className="text-base sm:text-lg font-serif font-medium text-arch-charcoal">
+              Have a specific question about your plot or property?
             </h4>
-            <p className="text-xs sm:text-sm text-slate-400 font-sans">
-              Speak directly with our senior site engineers at Nirman Infrastructure Ratnagiri.
+            <p className="text-xs text-arch-muted font-sans">
+              Our team is available at our Nachane office or via direct phone consultation.
             </p>
           </div>
 
           <div className="flex items-center gap-3 flex-shrink-0">
             <a
               href={`tel:${COMPANY_INFO.phoneRaw}`}
-              className="px-4 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-semibold text-xs border border-slate-700 transition-colors flex items-center gap-2"
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-arch-stone border border-arch-border hover:border-arch-bronze text-arch-charcoal text-xs font-sans tracking-wide rounded-sm transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-sky-400" />
-              <span>Call Us</span>
+              <Phone className="w-3.5 h-3.5 text-arch-bronze" />
+              <span>{COMPANY_INFO.phone}</span>
             </a>
             <button
-              type="button"
               onClick={onOpenConsultation}
-              className="px-4 py-2.5 rounded-xl bg-sky-600 hover:bg-sky-500 text-white font-semibold text-xs transition-colors flex items-center gap-1.5 cursor-pointer shadow-md"
+              className="inline-flex items-center gap-2 px-5 py-2.5 bg-arch-charcoal hover:bg-arch-bronze text-arch-ivory text-xs font-sans tracking-wider uppercase rounded-sm transition-colors cursor-pointer"
             >
-              <span>Get Free Advice</span>
+              <span>Ask Us Directly</span>
               <ArrowRight className="w-3.5 h-3.5" />
             </button>
           </div>

@@ -1,5 +1,5 @@
 import React from "react"
-import { ArrowRight, Phone, MessageSquare, MapPin, Sparkles, Building2 } from "lucide-react"
+import { ArrowRight, Phone, MessageSquare } from "lucide-react"
 import { COMPANY_INFO } from "@/data/nirmanData"
 
 interface LeadCtaProps {
@@ -8,74 +8,71 @@ interface LeadCtaProps {
 
 export const LeadCtaSection: React.FC<LeadCtaProps> = ({ onOpenConsultation }) => {
   return (
-    <section className="py-24 bg-[#090e1a] relative overflow-hidden border-t border-slate-800/80">
-      
-      {/* Blueprint Grid & Lighting Accents */}
-      <div className="absolute inset-0 bg-blueprint-grid opacity-30 pointer-events-none" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[300px] bg-sky-600/10 blur-[120px] pointer-events-none rounded-full" />
+    <section className="relative py-28 sm:py-36 overflow-hidden bg-arch-charcoal text-arch-ivory">
+      {/* Full-bleed Architectural Photography with Dark Overlay */}
+      <div className="absolute inset-0 z-0">
+        <img
+          src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
+          alt="Architectural structure in Ratnagiri"
+          className="w-full h-full object-cover object-center filter brightness-[0.25]"
+        />
+        <div className="absolute inset-0 bg-[#1C1C1A]/75 backdrop-blur-[1px]" />
+      </div>
 
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-8">
         
-        {/* Top Tag */}
-        <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-sky-800/60 text-sky-400 text-xs font-mono uppercase tracking-wider">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Start Your Construction Journey</span>
-        </div>
+        <span className="text-xs uppercase tracking-[0.25em] text-arch-bronze font-semibold">
+          Begin Your Build
+        </span>
 
         {/* Main Headline */}
-        <h2 className="text-3xl sm:text-5xl md:text-6xl font-display font-extrabold text-white tracking-tight leading-tight">
-          Planning Your Next <br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-sky-400 via-sky-300 to-emerald-400">
-            Construction Project?
-          </span>
+        <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-normal text-arch-ivory tracking-tight leading-tight">
+          Planning Your Next Project?
         </h2>
 
         {/* Supporting Copy */}
-        <p className="text-base sm:text-xl text-slate-300 font-sans max-w-2xl mx-auto leading-relaxed">
+        <p className="text-base sm:text-lg text-arch-stone/85 font-sans max-w-2xl mx-auto leading-relaxed">
           Talk to Nirman Infrastructure Ratnagiri and discuss your project requirements with our engineering and design team.
         </p>
 
         {/* Action Buttons */}
         <div className="pt-4 flex flex-wrap items-center justify-center gap-4">
           
-          {/* Primary CTA */}
+          {/* Primary CTA: Discuss Your Project */}
           <button
             type="button"
             onClick={onOpenConsultation}
-            className="px-8 py-4 rounded-xl text-sm font-bold uppercase tracking-wider text-white bg-gradient-to-r from-sky-600 to-sky-500 hover:from-sky-500 hover:to-sky-400 shadow-xl shadow-sky-950/60 transition-all flex items-center gap-2.5 cursor-pointer active:scale-95 group"
+            className="px-8 py-4 bg-arch-bronze hover:bg-arch-bronze/90 text-arch-ivory text-xs uppercase tracking-widest font-medium transition-colors rounded-sm flex items-center gap-2.5 cursor-pointer shadow-lg"
           >
-            <span>Get Free Consultation</span>
-            <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
+            <span>Discuss Your Project</span>
+            <ArrowRight className="w-3.5 h-3.5" />
           </button>
 
           {/* Secondary CTA: Call */}
           <a
             href={`tel:${COMPANY_INFO.phoneRaw}`}
-            className="px-6 py-4 rounded-xl text-sm font-semibold text-white bg-slate-900/90 hover:bg-slate-800 border border-slate-700 shadow-lg transition-all flex items-center gap-2.5"
+            className="px-7 py-4 bg-transparent hover:bg-arch-ivory/10 text-arch-ivory border border-arch-ivory/40 text-xs uppercase tracking-widest font-medium transition-colors rounded-sm flex items-center gap-2.5"
           >
-            <Phone className="w-4 h-4 text-emerald-400" />
+            <Phone className="w-3.5 h-3.5 text-arch-bronze" />
             <span>Call {COMPANY_INFO.phone}</span>
           </a>
 
           {/* WhatsApp CTA */}
           <a
-            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=${encodeURIComponent(
-              "Hello Nirman Infrastructure, I would like to schedule a free construction consultation in Ratnagiri."
-            )}`}
+            href={`https://wa.me/${COMPANY_INFO.whatsapp}?text=Hello%20Nirman%20Infrastructure,%20I%20am%20interested%20in%20discussing%20a%20construction%20project.`}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-6 py-4 rounded-xl text-sm font-semibold text-emerald-300 hover:text-emerald-200 bg-emerald-950/50 hover:bg-emerald-900/60 border border-emerald-700/60 transition-all flex items-center gap-2.5"
+            className="px-6 py-4 bg-transparent hover:bg-arch-ivory/10 text-arch-stone/80 hover:text-arch-ivory text-xs uppercase tracking-wider font-medium transition-colors flex items-center gap-2"
           >
-            <MessageSquare className="w-4 h-4 text-emerald-400" />
-            <span>WhatsApp Enquiry</span>
+            <MessageSquare className="w-3.5 h-3.5 text-arch-bronze" />
+            <span>WhatsApp Us</span>
           </a>
 
         </div>
 
-        {/* Office Location Snippet */}
-        <div className="pt-6 flex items-center justify-center gap-2 text-xs text-slate-400 font-mono">
-          <MapPin className="w-3.5 h-3.5 text-sky-400" />
-          <span>Indradhanu, Behind Chhatrapati Shivaji Maharaj Stadium, SV Rd, Nachane, Ratnagiri</span>
+        {/* Address snippet */}
+        <div className="pt-8 border-t border-[#33322E] text-xs text-arch-stone/60 font-sans">
+          Office: {COMPANY_INFO.address.officeName}, {COMPANY_INFO.address.landmark}, {COMPANY_INFO.address.street}, {COMPANY_INFO.address.area}, Ratnagiri {COMPANY_INFO.address.pincode}
         </div>
 
       </div>
