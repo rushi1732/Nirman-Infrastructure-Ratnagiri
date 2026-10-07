@@ -180,7 +180,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       <AnimatePresence>
         {selectedService && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm"
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
             onClick={() => setSelectedService(null)}
           >
             <motion.div
@@ -188,13 +188,15 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               onClick={(e) => e.stopPropagation()}
-              className="bg-[#F4F1EA] border border-[#D8D2C5] rounded max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative p-6 sm:p-8 space-y-6 text-[#252421]"
+              style={{ backgroundColor: "#FFFFFF" }}
+              className="bg-white border-2 border-[#D8D2C5] rounded-lg max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl relative p-6 sm:p-8 space-y-6 text-[#1C1C1A]"
             >
               {/* Close Button */}
               <button
                 type="button"
                 onClick={() => setSelectedService(null)}
-                className="absolute top-5 right-5 p-2 rounded hover:bg-[#E8E3D9] text-[#716D65] hover:text-[#252421] transition-colors cursor-pointer"
+                aria-label="Close dialog"
+                className="absolute top-5 right-5 w-9 h-9 rounded-full bg-[#F4F1EA] hover:bg-[#E8E3D9] text-[#1C1C1A] border border-[#D8D2C5] flex items-center justify-center transition-colors cursor-pointer shadow-sm z-10"
               >
                 <X className="w-5 h-5" />
               </button>

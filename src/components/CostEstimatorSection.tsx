@@ -85,7 +85,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
         </div>
 
         {/* Main Estimator Box */}
-        <div className="bg-arch-ivory border border-arch-border p-6 sm:p-10 lg:p-12 rounded-sm shadow-sm">
+        <div className="bg-white border-2 border-[#D8D2C5] p-6 sm:p-10 lg:p-12 rounded-lg shadow-lg" style={{ backgroundColor: "#FFFFFF" }}>
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             
             {/* Left Controls (7 Cols) */}
@@ -93,7 +93,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
               
               {/* 1. Category Selector */}
               <div className="space-y-3">
-                <label className="text-xs font-mono uppercase tracking-wider text-arch-muted block">
+                <label className="text-xs font-sans font-bold uppercase tracking-wider text-[#1C1C1A] block">
                   Select Construction Scope
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -106,19 +106,19 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                         key={tierKey}
                         type="button"
                         onClick={() => setSpecTier(tierKey)}
-                        className={`p-4 rounded-sm text-left border transition-all cursor-pointer ${
+                        className={`p-4 rounded-md text-left border-2 transition-all cursor-pointer ${
                           isSelected
-                            ? "bg-arch-stone/50 border-arch-bronze shadow-sm"
-                            : "bg-arch-ivory border-arch-border hover:border-arch-bronze/40 text-arch-muted"
+                            ? "bg-[#F4F1EA] border-[#A8793D] shadow-sm text-[#1C1C1A]"
+                            : "bg-[#FBF9F5] border-[#D8D2C5] hover:border-[#A8793D]/60 text-[#716D65]"
                         }`}
                       >
                         <div className="flex items-center justify-between mb-1">
-                          <span className={`text-xs font-serif font-medium ${isSelected ? "text-arch-charcoal" : "text-arch-muted"}`}>
+                          <span className={`text-sm font-serif font-bold ${isSelected ? "text-[#1C1C1A]" : "text-[#252421]"}`}>
                             {t.name}
                           </span>
-                          {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-arch-bronze" />}
+                          {isSelected && <span className="w-2 h-2 rounded-full bg-[#A8793D]" />}
                         </div>
-                        <span className="text-[11px] font-mono text-arch-bronze block">
+                        <span className="text-xs font-mono font-semibold text-[#A8793D] block">
                           ~₹{t.ratePerSqFt} / sq.ft indicative
                         </span>
                       </button>
