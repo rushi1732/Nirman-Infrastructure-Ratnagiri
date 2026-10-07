@@ -75,7 +75,7 @@ export const COMPANY_INFO = {
     timings: "9:30 AM – 7:00 PM",
   },
   workingHours: "Monday to Saturday: 9:30 AM – 7:00 PM (Sunday by Appointment)",
-  googleMapsUrl: "https://www.google.com/maps/place/Nirman+Infrastructure+Ratnagiri/@16.9863089,73.2752385,8697m/data=!3m1!1e3!4m10!1m2!2m1!1sbuilder+in+Ratnagiri,+Maharashtra!3m6!1s0x3bea0d87c6c61a49:0x653f9a2bc79f24c7!8m2!3d16.9863089!4d73.3133418!15sCiFidWlsZGVyIGluIFJhdG5hZ2lyaSwgTWFoYXJhc2h0cmFaIiIgYnVpbGRlciBpbiByYXRuYWdpcmkgbWFoYXJhc2h0cmGSARRjb25zdHJ1Y3Rpb25fY29tcGFueeABAA!16s%2Fg%2F11rfdb0r6j",
+  googleMapsUrl: "https://www.google.com/maps/place/Nirman+Infrastructure+Ratnagiri/@16.9863089,73.2752385,8697m/data=!3m1!1e3!4m10!1m2!2m1!1sbuilder+in+Ratnagiri,+Maharashtra!3m6!1s0x3bea0d87c6c61a49:0x653f9a2bc79f24c7!8m2!3d16.9863089!4d73.3133418!15sCiFidWlsZGVyIGluIFJhdG5hZ2lyaSwgTWFoYXJhc2h0cmFaIiIgYnVpbGRlciBpbiByYXRuYWdpcmkgbWFoYXJhc2h0cmGSARRjb25zdHJ1Y3Rpb25fY29tcGFueeABAA!16s%2Fg%2F11rfdb0r6j?entry=ttu&g_ep=EgoyMDI2MTAwNC4wIKXMDSoASAFQAw%3D%3D",
   googleMapsEmbed: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15277.62545853526!2d73.3033418!3d16.9863089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bea0d87c6c61a49%3A0x653f9a2bc79f24c7!2sNirman%20Infrastructure%20Ratnagiri!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin",
 }
 
