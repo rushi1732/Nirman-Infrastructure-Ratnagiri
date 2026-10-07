@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react"
+import React, { useState, useEffect, useRef } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 
 interface IntroSplashScreenProps {
@@ -14,18 +14,23 @@ export const IntroSplashScreen: React.FC<IntroSplashScreenProps> = ({ onComplete
   const [isExiting, setIsExiting] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
 
+  const onCompleteRef = useRef(onComplete)
+  onCompleteRef.current = onComplete
+  const hasExitedRef = useRef(false)
+
   const triggerExit = React.useCallback(() => {
+    if (hasExitedRef.current) return
+    hasExitedRef.current = true
     setIsExiting(true)
     setTimeout(() => {
       document.body.style.overflow = ""
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior })
       setIsFinished(true)
-      if (onComplete) onComplete()
+      if (onCompleteRef.current) onCompleteRef.current()
     }, 850)
-  }, [onComplete])
+  }, [])
 
   useEffect(() => {
-    // Lock scroll at top so the underlying page and footer stay completely stationary
+    // Lock scroll at top initially on initial page load
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior })
     const originalOverflow = document.body.style.overflow
     document.body.style.overflow = "hidden"

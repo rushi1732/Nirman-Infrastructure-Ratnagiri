@@ -41,6 +41,16 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
 
+  useEffect(() => {
+    if (open) {
+      const lenis = (window as any).__lenis
+      lenis?.stop()
+      return () => {
+        lenis?.start()
+      }
+    }
+  }, [open])
+
   if (!open) return null
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -59,7 +69,10 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
   }
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6">
+    <div
+      data-lenis-prevent
+      className="fixed inset-0 z-50 overflow-y-auto bg-black/75 backdrop-blur-md flex items-center justify-center p-4 sm:p-6"
+    >
       <motion.div
         initial={{ opacity: 0, scale: 0.95, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}

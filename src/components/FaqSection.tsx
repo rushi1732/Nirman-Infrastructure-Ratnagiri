@@ -71,6 +71,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenConsultation }) =>
               <span>{COMPANY_INFO.phone}</span>
             </a>
             <button
+              type="button"
               onClick={onOpenConsultation}
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-arch-charcoal hover:bg-arch-bronze text-arch-ivory text-xs font-sans tracking-wider uppercase rounded-sm transition-colors cursor-pointer"
             >

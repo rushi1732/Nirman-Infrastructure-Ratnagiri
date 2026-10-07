@@ -14,7 +14,6 @@ import { IntroSplashScreen } from "@/components/IntroSplashScreen"
 
 // Lazy-loaded heavy below-the-fold sections
 const ProjectsSection = lazy(() => import("@/components/ProjectsSection").then(m => ({ default: m.ProjectsSection })))
-const ThreeArchitecturalCanvas = lazy(() => import("@/components/ThreeArchitecturalCanvas"))
 const GallerySection = lazy(() => import("@/components/GallerySection").then(m => ({ default: m.GallerySection })))
 const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })))
 const FaqSection = lazy(() => import("@/components/FaqSection").then(m => ({ default: m.FaqSection })))
@@ -28,23 +27,14 @@ const SectionFallback: React.FC = () => (
   </div>
 )
 
-const ThreeSceneFallback: React.FC = () => (
-  <section className="py-28 bg-[#F4F1EA] text-[#252421] relative overflow-hidden">
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="w-full h-[520px] sm:h-[620px] rounded bg-[#E8E3D9] border border-[#D8D2C5] flex flex-col items-center justify-center gap-3">
-        <div className="w-10 h-10 rounded-full border-2 border-[#A8793D]/30 border-t-[#A8793D] animate-spin" />
-        <span className="text-xs uppercase tracking-widest font-mono text-[#716D65]">
-          Loading 3D Massing Study...
-        </span>
-      </div>
-    </div>
-  </section>
-)
-
 export function App() {
   const [consultationOpen, setConsultationOpen] = useState(false)
   const [selectedService, setSelectedService] = useState<string | undefined>(undefined)
   const [introCompleted, setIntroCompleted] = useState(false)
+
+  const handleIntroComplete = React.useCallback(() => {
+    setIntroCompleted(true)
+  }, [])
 
   const handleOpenConsultation = (serviceName?: string) => {
     setSelectedService(serviceName)
@@ -54,7 +44,9 @@ export function App() {
   return (
     <SmoothScrollProvider>
       {/* Cinematic Intro Splash Screen */}
-      <IntroSplashScreen onComplete={() => setIntroCompleted(true)} />
+      {!introCompleted && (
+        <IntroSplashScreen onComplete={handleIntroComplete} />
+      )}
 
       {/* Main Website Container - Kept completely static without transforms so footer never shifts */}
       <div className="min-h-screen bg-[#F4F1EA] text-[#1C1C1A] selection:bg-[#A8793D] selection:text-white relative font-sans">
@@ -80,12 +72,7 @@ export function App() {
           {/* 6. Nyati Group Style Architectural Philosophy Parallax Quote Showcase */}
           <ArchitecturalPhilosophySection />
 
-          {/* 7. Interactive 3D Architectural Scene (R3F + Drei - Lazy Loaded & Non-Blocking) */}
-          <Suspense fallback={<ThreeSceneFallback />}>
-            <ThreeArchitecturalCanvas onOpenConsultation={() => handleOpenConsultation("3D Architectural Elevation")} />
-          </Suspense>
-
-          {/* 8. Comprehensive Business Services */}
+          {/* 7. Comprehensive Business Services */}
           <ServicesSection onSelectService={handleOpenConsultation} />
 
           {/* 9. Why Choose Us: Foundational Principles */}

@@ -78,8 +78,9 @@ export const ProcessSection: React.FC<ProcessSectionProps> = ({ onOpenConsultati
             Have a project in Ratnagiri requiring structured coordination?
           </p>
           <button
+            type="button"
             onClick={onOpenConsultation}
-            className="inline-flex items-center gap-2 px-8 py-3.5 bg-arch-charcoal text-arch-ivory text-xs tracking-widest uppercase hover:bg-arch-bronze transition-colors rounded-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 bg-arch-charcoal text-arch-ivory text-xs tracking-widest uppercase hover:bg-arch-bronze transition-colors rounded-sm cursor-pointer"
           >
             <span>Start Stage 01 Consultation</span>
             <ArrowRight className="w-3.5 h-3.5" />

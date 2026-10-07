@@ -10,6 +10,16 @@ interface ServicesSectionProps {
 export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectService }) => {
   const [selectedService, setSelectedService] = useState<ServiceItem | null>(null)
 
+  React.useEffect(() => {
+    if (selectedService) {
+      const lenis = (window as any).__lenis
+      lenis?.stop()
+      return () => {
+        lenis?.start()
+      }
+    }
+  }, [selectedService])
+
   const featuredServices = SERVICES_DATA.filter((s) => s.isFeatured)
   const additionalServices = SERVICES_DATA.filter((s) => !s.isFeatured)
 
@@ -180,6 +190,7 @@ export const ServicesSection: React.FC<ServicesSectionProps> = ({ onSelectServic
       <AnimatePresence>
         {selectedService && (
           <div
+            data-lenis-prevent
             className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/75 backdrop-blur-md"
             onClick={() => setSelectedService(null)}
           >

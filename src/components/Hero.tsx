@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ArrowDown, Phone, ArrowRight, ShieldCheck, MapPin, Building2, CheckCircle2 } from "lucide-react"
 import { COMPANY_INFO } from "@/data/nirmanData"
@@ -9,20 +9,46 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = () => {
   const headlineWords = ["Building", "Spaces.", "Creating", "Lasting", "Value."]
+  const videoRef = useRef<HTMLVideoElement>(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (video) {
+      video.muted = true
+      const playPromise = video.play()
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.warn("Autoplay note:", err)
+        })
+      }
+    }
+  }, [])
+
+  const handleEnded = () => {
+    const video = videoRef.current
+    if (video) {
+      // Freeze on the last scene
+      video.pause()
+    }
+  }
 
   return (
     <section
       id="hero"
       className="relative min-h-[96vh] lg:min-h-screen flex flex-col justify-end pb-12 sm:pb-16 pt-36 sm:pt-44 overflow-hidden"
     >
-      {/* 1. Real Nirman Project Building Background with Cinematic Ken-Burns Zoom */}
-      <div className="absolute inset-0 z-0 overflow-hidden">
-        <motion.img
-          src="/images/nirman-building.png"
-          alt="Nirman Infrastructure Ratnagiri Landmark Building"
-          animate={{ scale: [1, 1.06, 1] }}
-          transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-          className="w-full h-full object-cover object-center filter brightness-[0.88] contrast-[1.08]"
+      {/* 1. Cinematic Video Background: Plays once when opening site, freezes on last frame */}
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#141412]">
+        <video
+          ref={videoRef}
+          src="/videos/architect-sketch-to-reality.mp4"
+          autoPlay
+          muted
+          playsInline
+          loop={false}
+          preload="auto"
+          onEnded={handleEnded}
+          className="w-full h-full object-cover object-center filter brightness-[0.92] contrast-[1.06]"
         />
         {/* Luxury Vignette Gradient: Deep Onyx at bottom, ambient gold center, subtle top shadow */}
         <div className="absolute inset-0 bg-gradient-to-t from-[#141412] via-[#141412]/50 to-black/40 pointer-events-none" />
