@@ -279,12 +279,18 @@ export const ContactSection: React.FC = () => {
                         onChange={handleChange}
                         className="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-sm text-white focus:outline-none focus:border-sky-500 focus:ring-1 focus:ring-sky-500 transition-all"
                       >
-                        <option value="Residential Construction">Residential Construction (Bungalow / Villa)</option>
-                        <option value="Commercial Construction">Commercial Construction (Complex / Retail)</option>
-                        <option value="Turnkey Construction">Turnkey Complete Package</option>
-                        <option value="Real Estate Development">Real Estate / Plotted Layout</option>
-                        <option value="Renovation & Redevelopment">Renovation / Structural Expansion</option>
-                        <option value="Construction Consultation">Construction Consultation & BOQ</option>
+                        <option value="Building Construction Services">Building Construction Services</option>
+                        <option value="Property Construction Contractors">Property Construction Contractors</option>
+                        <option value="Residential Builders">Residential Builders</option>
+                        <option value="Commercial Building Construction">Commercial Building Construction</option>
+                        <option value="Building Erection Services">Building Erection Services</option>
+                        <option value="Building Development Services">Building Development Services</option>
+                        <option value="General Building Contractors">General Building Contractors</option>
+                        <option value="Construction Services Provider">Construction Services Provider</option>
+                        <option value="Home Construction Contractors">Home Construction Contractors</option>
+                        <option value="Real Estate Construction">Real Estate Construction</option>
+                        <option value="Structure Building Services">Structure Building Services</option>
+                        <option value="Temple Construction Services">Temple Construction Services</option>
                       </select>
                     </div>
                   </div>

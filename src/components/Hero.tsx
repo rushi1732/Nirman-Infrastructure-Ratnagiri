@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { ArrowRight, Phone, MessageSquare, ShieldCheck, Compass, MapPin, Building, Award, CheckCircle2 } from "lucide-react"
+import { ArrowRight, Phone, MessageSquare, ShieldCheck, Compass, MapPin, Building, CheckCircle2 } from "lucide-react"
 import { COMPANY_INFO } from "@/data/nirmanData"
 
 interface HeroProps {
@@ -17,7 +17,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
       <div className="absolute inset-0 -z-10 overflow-hidden">
         <img
           src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=2000&q=85"
-          alt="Modern Architectural Construction in Ratnagiri"
+          alt="Building Construction by Nirman Infrastructure Ratnagiri"
           className="w-full h-full object-cover object-center scale-105 transform motion-safe:animate-pulse-subtle"
           style={{ animationDuration: "10s" }}
         />
@@ -75,8 +75,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg sm:text-xl text-slate-300 font-sans max-w-2xl leading-relaxed"
             >
-              Professional construction and real estate solutions in Ratnagiri, Maharashtra. 
-              Engineered with precision for the Konkan climate, from bespoke family villas to landmark commercial infrastructure.
+              Professional building construction and property contracting solutions in Ratnagiri, Maharashtra. 
+              Delivering organized project execution, quality workmanship, and attention to every stage of construction.
             </motion.p>
 
             {/* Primary & Secondary CTAs + Quick Contacts */}
@@ -140,21 +140,21 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
             >
               <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                 <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
-                <span>Turnkey Construction</span>
+                <span>Building Construction</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                 <CheckCircle2 className="w-4 h-4 text-sky-400 flex-shrink-0" />
-                <span>Monsoon-Proof Design</span>
+                <span>Weather-Conscious Design</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-slate-300 font-medium">
                 <CheckCircle2 className="w-4 h-4 text-amber-400 flex-shrink-0" />
-                <span>Transparent BOQ Costing</span>
+                <span>Structured Project Planning</span>
               </div>
             </motion.div>
 
           </div>
 
-          {/* Right Floating Architectural Feature Card - 4 Cols */}
+          {/* Right Floating Feature Card - 4 Cols */}
           <div className="lg:col-span-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -162,7 +162,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
               transition={{ duration: 0.7, delay: 0.2 }}
               className="bg-slate-900/90 border border-slate-800 rounded-2xl p-6 shadow-2xl backdrop-blur-xl relative overflow-hidden space-y-5"
             >
-              {/* Subtle architectural accent line */}
+              {/* Accent line */}
               <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-sky-500 via-emerald-500 to-sky-400" />
 
               <div className="flex items-center justify-between pb-3 border-b border-slate-800">
@@ -181,8 +181,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                 <h2 className="text-xl font-display font-bold text-white leading-snug">
                   Planning to Build in Ratnagiri?
                 </h2>
-                <p className="text-xs text-slate-300 leading-relaxed">
-                  Whether you are planning a modern bungalow in Nachane, a commercial building along SV Road, or seeking turnkey contracting with verified Grade-A materials.
+                <p className="text-xs text-slate-300 leading-relaxed font-sans">
+                  Whether you are planning a new residential home in Nachane, a commercial building along SV Road, or property development with structured site execution.
                 </p>
               </div>
 
@@ -193,8 +193,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                   <span className="font-semibold text-white">Nachane, Ratnagiri</span>
                 </div>
                 <div className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 flex items-center justify-between">
-                  <span className="text-slate-400">Contract Modes</span>
-                  <span className="font-semibold text-white">Turnkey / Item-Rate EPC</span>
+                  <span className="text-slate-400">Services</span>
+                  <span className="font-semibold text-white">12 Construction Categories</span>
                 </div>
                 <div className="p-2.5 rounded-lg bg-slate-950/60 border border-slate-800 flex items-center justify-between">
                   <span className="text-slate-400">Direct Contact</span>
@@ -208,7 +208,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenConsultation }) => {
                 onClick={onOpenConsultation}
                 className="w-full py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-400 hover:text-white font-semibold text-xs uppercase tracking-wider border border-slate-700 transition-colors flex items-center justify-center gap-2 cursor-pointer"
               >
-                <span>Schedule Site Review</span>
+                <span>Schedule Project Review</span>
                 <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </motion.div>

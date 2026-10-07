@@ -170,12 +170,18 @@ export const ConsultationDialog: React.FC<ConsultationDialogProps> = ({
                     onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
                     className="w-full px-3.5 py-2.5 rounded-xl bg-slate-950 border border-slate-800 text-xs sm:text-sm text-white focus:outline-none focus:border-sky-500"
                   >
-                    <option value="Residential Construction">Residential Construction</option>
-                    <option value="Commercial Construction">Commercial Construction</option>
-                    <option value="Turnkey Construction">Turnkey Construction</option>
-                    <option value="Real Estate Development">Real Estate Development</option>
-                    <option value="Renovation & Redevelopment">Renovation & Redevelopment</option>
-                    <option value="Construction Consultation">Construction Consultation</option>
+                    <option value="Building Construction Services">Building Construction Services</option>
+                    <option value="Property Construction Contractors">Property Construction Contractors</option>
+                    <option value="Residential Builders">Residential Builders</option>
+                    <option value="Commercial Building Construction">Commercial Building Construction</option>
+                    <option value="Building Erection Services">Building Erection Services</option>
+                    <option value="Building Development Services">Building Development Services</option>
+                    <option value="General Building Contractors">General Building Contractors</option>
+                    <option value="Construction Services Provider">Construction Services Provider</option>
+                    <option value="Home Construction Contractors">Home Construction Contractors</option>
+                    <option value="Real Estate Construction">Real Estate Construction</option>
+                    <option value="Structure Building Services">Structure Building Services</option>
+                    <option value="Temple Construction Services">Temple Construction Services</option>
                   </select>
                 </div>
 

@@ -17,8 +17,8 @@ export const Footer: React.FC = () => {
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 pb-16 border-b border-slate-800/80">
           
-          {/* Brand Col (4 Cols) */}
-          <div className="lg:col-span-4 space-y-6">
+          {/* Brand Col (3 Cols) */}
+          <div className="lg:col-span-3 space-y-6">
             
             {/* Logo in clean high-contrast container */}
             <div className="bg-white rounded-xl p-2.5 w-fit shadow-md border border-slate-200/40">
@@ -82,25 +82,25 @@ export const Footer: React.FC = () => {
             </ul>
           </div>
 
-          {/* Services Offered (3 Cols) */}
-          <div className="lg:col-span-3 space-y-4">
+          {/* Services Offered (4 Cols) */}
+          <div className="lg:col-span-4 space-y-4">
             <h4 className="text-xs font-mono uppercase tracking-wider text-white font-semibold">
-              Capabilities
+              Construction Services (12 Categories)
             </h4>
-            <ul className="space-y-2 text-xs font-sans">
+            <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 text-xs font-sans">
               {SERVICES_DATA.map((s) => (
                 <li key={s.id}>
-                  <a href="#services" className="hover:text-white transition-colors block">
-                    {s.title}
+                  <a href="#services" className="hover:text-white transition-colors block truncate" title={s.title}>
+                    • {s.title}
                   </a>
                 </li>
               ))}
-              <li>
-                <a href="#estimator" className="hover:text-white transition-colors text-sky-400">
-                  Interactive Cost Estimator →
-                </a>
-              </li>
             </ul>
+            <div className="pt-2">
+              <a href="#estimator" className="hover:text-white transition-colors text-xs text-sky-400 font-mono inline-flex items-center gap-1">
+                <span>Interactive Cost Estimator</span> →
+              </a>
+            </div>
           </div>
 
           {/* Contact Details & Links (3 Cols) */}

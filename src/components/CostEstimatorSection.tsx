@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react"
-import { Calculator, ArrowRight, ShieldCheck, CheckCircle2, Clock, IndianRupee, Sparkles } from "lucide-react"
+import { Calculator, ArrowRight, CheckCircle2, Clock } from "lucide-react"
 
 interface EstimatorProps {
   onOpenConsultationWithData: (data: { area: number; type: string; estimatedCost: string }) => void
@@ -9,35 +9,35 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
   const [area, setArea] = useState<number>(1800)
   const [specTier, setSpecTier] = useState<"standard" | "premium" | "turnkey" | "commercial">("turnkey")
 
-  // Specification rates per sq.ft tailored for Ratnagiri construction
+  // Specification rates per sq.ft tailored for Ratnagiri construction planning
   const tierConfigs = {
     standard: {
-      name: "Standard Residential RCC",
+      name: "Residential Building Construction",
       ratePerSqFt: 1850,
       timelineMonths: (a: number) => Math.ceil(a / 250) + 4,
-      desc: "Robust RCC framed structure, standard vitrified flooring, exterior weather-coat, and certified Fe-550D reinforcement.",
-      features: ["Grade Fe-550D Steel", "Red Brick / AAC Blockwork", "Concealed Copper Wiring", "Terrace Waterproofing"]
+      desc: "Structured building construction covering foundation, RCC framed skeleton, brick masonry, and essential finishing.",
+      features: ["RCC Framed Structure", "Brick / Masonry Work", "Concealed Electrical Lines", "Terrace Weather Protection"]
     },
     premium: {
-      name: "Premium Architectural Villa",
+      name: "Custom Home & Villa Construction",
       ratePerSqFt: 2450,
       timelineMonths: (a: number) => Math.ceil(a / 220) + 5,
-      desc: "Architectural elevation treatments, laterite stone accents, premium vitrified tiles, UPVC noise-reduction windows, and dual-coat polymer weather barrier.",
-      features: ["Architectural Elevation", "UPVC Sound-Dampening Glazing", "High-Grade Sanityware", "Laterite Stone Cladding Accents"]
+      desc: "Custom residential home construction with architectural elevation detailing, quality flooring, and coordinated joinery.",
+      features: ["Custom Elevation Detailing", "Quality Window Glazing", "Sanitary & Bath Fittings", "Natural Stone Accents"]
     },
     turnkey: {
-      name: "Turnkey Complete (Ready-to-Move)",
+      name: "Complete Property Construction",
       ratePerSqFt: 2850,
       timelineMonths: (a: number) => Math.ceil(a / 200) + 6,
-      desc: "All-inclusive contract from foundation excavation to modular kitchen, premium sanitary fixtures, painting, and interior joinery handover.",
-      features: ["Single Window Handover", "Complete Electrical & Plumbing", "Monsoon Barrier Guarantee", "Full Interior Paint & Finishes"]
+      desc: "Coordinated contracting from initial site planning through structural execution, utility installations, and final interior handover.",
+      features: ["Coordinated Project Workflow", "Electrical & Plumbing Run", "Protective Exterior Finish", "Complete Interior Handover"]
     },
     commercial: {
-      name: "Commercial Building / Retail Complex",
+      name: "Commercial Building Construction",
       ratePerSqFt: 2250,
       timelineMonths: (a: number) => Math.ceil(a / 350) + 6,
-      desc: "High-load capacity slabs, column-free showroom spans, modern glass frontage, fire sprinkler conduit provision, and heavy duty lobby finishes.",
-      features: ["Column-Free Spans", "Toughened Glass Facade", "Heavy-Load RCC Slabs", "Underground Utility Trenches"]
+      desc: "Commercial building construction planned for offices, retail establishments, and business hubs with functional space planning.",
+      features: ["Column Spans for Business", "Glass Frontage Detailing", "Commercial Load Slabs", "Planned Utility Runs"]
     }
   }
 
@@ -74,7 +74,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-16 space-y-4">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-slate-900 border border-sky-800/60 text-sky-400 text-xs font-mono uppercase tracking-wider">
             <Calculator className="w-3.5 h-3.5" />
-            <span>Interactive Cost & Timeline Estimator</span>
+            <span>Interactive Project Estimator</span>
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-display font-bold text-white tracking-tight">
@@ -82,7 +82,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
           </h2>
 
           <p className="text-sm sm:text-base text-slate-300 leading-relaxed font-sans">
-            Calculate preliminary budgetary requirements and estimated project duration based on your intended built-up area and specification grade.
+            Calculate preliminary budgetary requirements and estimated project duration based on your intended built-up area and construction scope.
           </p>
         </div>
 
@@ -93,10 +93,10 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
             {/* Left Controls (7 Cols) */}
             <div className="lg:col-span-7 space-y-8">
               
-              {/* 1. Specification Tier Selector */}
+              {/* 1. Category Selector */}
               <div className="space-y-3">
                 <label className="text-xs font-mono uppercase tracking-wider text-slate-400 block">
-                  Select Construction Category
+                  Select Construction Service Category
                 </label>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {(["turnkey", "premium", "standard", "commercial"] as const).map((tierKey) => {
@@ -121,7 +121,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                           {isSelected && <span className="w-2 h-2 rounded-full bg-emerald-400" />}
                         </div>
                         <span className="text-[11px] font-mono text-sky-400 block">
-                          ~₹{t.ratePerSqFt} / sq.ft
+                          ~₹{t.ratePerSqFt} / sq.ft indicative
                         </span>
                       </button>
                     )
@@ -151,7 +151,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                 />
 
                 <div className="flex justify-between text-[11px] font-mono text-slate-500">
-                  <span>600 sq.ft (Bungalow)</span>
+                  <span>600 sq.ft (Home)</span>
                   <span>3,000 sq.ft</span>
                   <span>6,000 sq.ft</span>
                   <span>10,000+ sq.ft (Commercial)</span>
@@ -188,7 +188,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                     {calculatedCost}
                   </div>
                   <span className="text-[11px] font-sans text-slate-400 block">
-                    Estimated cost based on {area.toLocaleString()} sq.ft built-up area
+                    Estimated indicative cost based on {area.toLocaleString()} sq.ft
                   </span>
                 </div>
 
@@ -206,13 +206,13 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                     </div>
                   </div>
                   <span className="text-[10px] font-mono text-emerald-400 bg-emerald-950 px-2 py-0.5 rounded border border-emerald-800/40">
-                    Includes Curing
+                    Phased Work
                   </span>
                 </div>
 
                 <div className="space-y-2 text-xs text-slate-400 font-sans">
                   <p>
-                    * Note: This estimator provides indicative guidance. Actual costs depend on site soil profiles, contour excavation, and custom finishing choices.
+                    * Note: This estimator provides indicative guidance. Actual costs depend on site ground conditions, custom layout details, and chosen specifications.
                   </p>
                 </div>
 
@@ -222,7 +222,7 @@ export const CostEstimatorSection: React.FC<EstimatorProps> = ({ onOpenConsultat
                   onClick={handleRequestQuote}
                   className="w-full py-3.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-gradient-to-r from-sky-600 to-emerald-600 hover:from-sky-500 hover:to-emerald-500 shadow-xl shadow-sky-950/60 transition-all flex items-center justify-center gap-2 cursor-pointer active:scale-95"
                 >
-                  <span>Request Itemized BOQ For This Estimate</span>
+                  <span>Request Consultation For This Estimate</span>
                   <ArrowRight className="w-4 h-4" />
                 </button>
               </div>
