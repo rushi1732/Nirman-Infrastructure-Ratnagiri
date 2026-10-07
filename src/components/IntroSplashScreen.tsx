@@ -14,6 +14,16 @@ export const IntroSplashScreen: React.FC<IntroSplashScreenProps> = ({ onComplete
   const [isExiting, setIsExiting] = useState(false)
   const [isFinished, setIsFinished] = useState(false)
 
+  const triggerExit = React.useCallback(() => {
+    setIsExiting(true)
+    setTimeout(() => {
+      document.body.style.overflow = ""
+      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior })
+      setIsFinished(true)
+      if (onComplete) onComplete()
+    }, 850)
+  }, [onComplete])
+
   useEffect(() => {
     // Lock scroll at top so the underlying page and footer stay completely stationary
     window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior })
@@ -35,17 +45,7 @@ export const IntroSplashScreen: React.FC<IntroSplashScreenProps> = ({ onComplete
       clearTimeout(timerStep2)
       clearTimeout(timerExit)
     }
-  }, [])
-
-  const triggerExit = () => {
-    setIsExiting(true)
-    setTimeout(() => {
-      document.body.style.overflow = ""
-      window.scrollTo({ top: 0, left: 0, behavior: "instant" as ScrollBehavior })
-      setIsFinished(true)
-      if (onComplete) onComplete()
-    }, 850)
-  }
+  }, [triggerExit])
 
   if (isFinished) return null
 

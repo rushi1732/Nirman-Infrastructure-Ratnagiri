@@ -1,13 +1,14 @@
 import React, { useRef, useMemo, Suspense } from "react"
 import { Canvas, useFrame } from "@react-three/fiber"
 import { OrbitControls, Float } from "@react-three/drei"
-import * as THREE from "three"
+import { MeshStandardMaterial } from "three"
+import type { Group } from "three"
 import { RotateCw, RefreshCw, ArrowUpRight } from "lucide-react"
 
 // Abstract Architectural Conceptual Massing Model
 // Physical studio model aesthetic: concrete, honed stone, clear architectural glass, bronze finials
 function ArchitecturalMassingModel() {
-  const groupRef = useRef<THREE.Group>(null)
+  const groupRef = useRef<Group>(null)
 
   // Slow, restrained architectural rotation
   useFrame((_, delta) => {
@@ -19,7 +20,7 @@ function ArchitecturalMassingModel() {
   // Architectural Physical Materials
   const stoneMat = useMemo(
     () =>
-      new THREE.MeshStandardMaterial({
+      new MeshStandardMaterial({
         color: "#DDD6C8", // Warm honed limestone
         roughness: 0.85,
         metalness: 0.05,
@@ -29,7 +30,7 @@ function ArchitecturalMassingModel() {
 
   const concreteMat = useMemo(
     () =>
-      new THREE.MeshStandardMaterial({
+      new MeshStandardMaterial({
         color: "#9E9A90", // Cast architectural concrete
         roughness: 0.9,
         metalness: 0.1,
@@ -39,7 +40,7 @@ function ArchitecturalMassingModel() {
 
   const glassMat = useMemo(
     () =>
-      new THREE.MeshStandardMaterial({
+      new MeshStandardMaterial({
         color: "#CBD5E1",
         roughness: 0.15,
         metalness: 0.2,
@@ -51,7 +52,7 @@ function ArchitecturalMassingModel() {
 
   const bronzeMat = useMemo(
     () =>
-      new THREE.MeshStandardMaterial({
+      new MeshStandardMaterial({
         color: "#A8793D", // Refined architectural bronze
         roughness: 0.4,
         metalness: 0.65,
@@ -61,7 +62,7 @@ function ArchitecturalMassingModel() {
 
   const darkWoodMat = useMemo(
     () =>
-      new THREE.MeshStandardMaterial({
+      new MeshStandardMaterial({
         color: "#383633", // Architectural dark wood plinth
         roughness: 0.7,
       }),
@@ -268,3 +269,6 @@ export const ThreeArchitecturalCanvas: React.FC<{ onOpenConsultation: () => void
     </section>
   )
 }
+
+export default ThreeArchitecturalCanvas
+

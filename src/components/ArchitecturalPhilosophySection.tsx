@@ -1,6 +1,6 @@
 import React from "react"
 import { motion } from "framer-motion"
-import { Quote, Phone, MapPin, Sparkles } from "lucide-react"
+import { Quote, Phone, MapPin } from "lucide-react"
 import { COMPANY_INFO } from "@/data/nirmanData"
 
 export const ArchitecturalPhilosophySection: React.FC = () => {

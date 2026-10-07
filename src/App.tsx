@@ -1,23 +1,45 @@
-import React, { useState } from "react"
+import React, { useState, Suspense, lazy } from "react"
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider"
 import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
 import { MilestonesSection } from "@/components/MilestonesSection"
 import { AboutSection } from "@/components/AboutSection"
-import { ProjectsSection } from "@/components/ProjectsSection"
 import { ArchitecturalPhilosophySection } from "@/components/ArchitecturalPhilosophySection"
 import { ServicesSection } from "@/components/ServicesSection"
 import { WhyChooseUsSection } from "@/components/WhyChooseUsSection"
 import { ProcessSection } from "@/components/ProcessSection"
-import { GallerySection } from "@/components/GallerySection"
-import { TestimonialsSection } from "@/components/TestimonialsSection"
-import { FaqSection } from "@/components/FaqSection"
-import { ContactSection } from "@/components/ContactSection"
-import { GoogleMapsSection } from "@/components/GoogleMapsSection"
 import { Footer } from "@/components/Footer"
-import { ConsultationDialog } from "@/components/ConsultationDialog"
 import { BackToTop } from "@/components/BackToTop"
 import { IntroSplashScreen } from "@/components/IntroSplashScreen"
+
+// Lazy-loaded heavy below-the-fold sections
+const ProjectsSection = lazy(() => import("@/components/ProjectsSection").then(m => ({ default: m.ProjectsSection })))
+const ThreeArchitecturalCanvas = lazy(() => import("@/components/ThreeArchitecturalCanvas"))
+const GallerySection = lazy(() => import("@/components/GallerySection").then(m => ({ default: m.GallerySection })))
+const TestimonialsSection = lazy(() => import("@/components/TestimonialsSection").then(m => ({ default: m.TestimonialsSection })))
+const FaqSection = lazy(() => import("@/components/FaqSection").then(m => ({ default: m.FaqSection })))
+const ContactSection = lazy(() => import("@/components/ContactSection").then(m => ({ default: m.ContactSection })))
+const GoogleMapsSection = lazy(() => import("@/components/GoogleMapsSection").then(m => ({ default: m.GoogleMapsSection })))
+const ConsultationDialog = lazy(() => import("@/components/ConsultationDialog").then(m => ({ default: m.ConsultationDialog })))
+
+const SectionFallback: React.FC = () => (
+  <div className="w-full py-16 flex items-center justify-center min-h-[300px]">
+    <div className="w-8 h-8 rounded-full border-2 border-[#A8793D]/30 border-t-[#A8793D] animate-spin" />
+  </div>
+)
+
+const ThreeSceneFallback: React.FC = () => (
+  <section className="py-28 bg-[#F4F1EA] text-[#252421] relative overflow-hidden">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-full h-[520px] sm:h-[620px] rounded bg-[#E8E3D9] border border-[#D8D2C5] flex flex-col items-center justify-center gap-3">
+        <div className="w-10 h-10 rounded-full border-2 border-[#A8793D]/30 border-t-[#A8793D] animate-spin" />
+        <span className="text-xs uppercase tracking-widest font-mono text-[#716D65]">
+          Loading 3D Massing Study...
+        </span>
+      </div>
+    </div>
+  </section>
+)
 
 export function App() {
   const [consultationOpen, setConsultationOpen] = useState(false)
@@ -50,48 +72,69 @@ export function App() {
           {/* 4. Nyati Group Style "Who We Are" Split Storytelling Section */}
           <AboutSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 5. Nyati Group Style "Featured Landmarks" Portfolio (Click opens project preview, NO form) */}
-          <ProjectsSection />
+          {/* 5. Nyati Group Style "Featured Landmarks" Portfolio (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <ProjectsSection />
+          </Suspense>
 
           {/* 6. Nyati Group Style Architectural Philosophy Parallax Quote Showcase */}
           <ArchitecturalPhilosophySection />
 
-          {/* 7. Comprehensive Business Services */}
+          {/* 7. Interactive 3D Architectural Scene (R3F + Drei - Lazy Loaded & Non-Blocking) */}
+          <Suspense fallback={<ThreeSceneFallback />}>
+            <ThreeArchitecturalCanvas onOpenConsultation={() => handleOpenConsultation("3D Architectural Elevation")} />
+          </Suspense>
+
+          {/* 8. Comprehensive Business Services */}
           <ServicesSection onSelectService={handleOpenConsultation} />
 
-          {/* 8. Why Choose Us: Foundational Principles */}
+          {/* 9. Why Choose Us: Foundational Principles */}
           <WhyChooseUsSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 9. 6-Stage Construction Workflow Timeline */}
+          {/* 10. 6-Stage Construction Workflow Timeline */}
           <ProcessSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 10. Visual Portfolio Gallery */}
-          <GallerySection />
+          {/* 11. Visual Portfolio Gallery (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <GallerySection />
+          </Suspense>
 
-          {/* 11. Actual Google Business 4.8 Rating & Verified Reviews */}
-          <TestimonialsSection />
+          {/* 12. Actual Google Business 4.8 Rating & Verified Reviews (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <TestimonialsSection />
+          </Suspense>
 
-          {/* 12. Frequently Asked Questions */}
-          <FaqSection onOpenConsultation={() => handleOpenConsultation()} />
+          {/* 13. Frequently Asked Questions (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <FaqSection onOpenConsultation={() => handleOpenConsultation()} />
+          </Suspense>
 
-          {/* 13. Office Contact Details & High-Contrast Enquiry Form */}
-          <ContactSection />
+          {/* 14. Office Contact Details & High-Contrast Enquiry Form (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <ContactSection />
+          </Suspense>
 
-          {/* 14. Google Maps Nachane Office Location */}
-          <GoogleMapsSection />
+          {/* 15. Google Maps Nachane Office Location (Lazy Loaded) */}
+          <Suspense fallback={<SectionFallback />}>
+            <GoogleMapsSection />
+          </Suspense>
         </main>
 
-        {/* 15. Deep Charcoal Architectural Footer */}
+        {/* 16. Deep Charcoal Architectural Footer */}
         <Footer />
 
-        {/* 16. Project Consultation Modal Dialog */}
-        <ConsultationDialog
-          open={consultationOpen}
-          onOpenChange={setConsultationOpen}
-          initialProjectType={selectedService}
-        />
+        {/* 17. Project Consultation Modal Dialog (Lazy Loaded) */}
+        <Suspense fallback={null}>
+          {consultationOpen && (
+            <ConsultationDialog
+              open={consultationOpen}
+              onOpenChange={setConsultationOpen}
+              initialProjectType={selectedService}
+            />
+          )}
+        </Suspense>
 
-        {/* 17. Floating Back To Top Button */}
+        {/* 18. Floating Back To Top Button */}
         <BackToTop />
 
       </div>

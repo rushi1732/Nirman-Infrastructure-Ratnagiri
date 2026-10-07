@@ -1,5 +1,5 @@
 import React from "react"
-import { Phone, Mail, MapPin, ExternalLink, ArrowUp, MessageSquare } from "lucide-react"
+import { ArrowUp, MessageSquare } from "lucide-react"
 import { COMPANY_INFO, ALL_SERVICES_LIST } from "@/data/nirmanData"
 
 export const Footer: React.FC = () => {
