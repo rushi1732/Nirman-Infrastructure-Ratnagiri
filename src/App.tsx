@@ -42,8 +42,8 @@ export function App() {
           {/* 4. Comprehensive Business Services */}
           <ServicesSection onSelectService={handleOpenConsultation} />
 
-          {/* 5. Architectural Portfolio & Real Nirman Projects (Filter boxes removed) */}
-          <ProjectsSection onInquireProject={(title) => handleOpenConsultation(`Project: ${title}`)} />
+          {/* 5. Architectural Portfolio & Real Nirman Projects (Click opens project preview, NO form) */}
+          <ProjectsSection />
 
           {/* 6. Why Choose Us: Foundational Principles */}
           <WhyChooseUsSection onOpenConsultation={() => handleOpenConsultation()} />
