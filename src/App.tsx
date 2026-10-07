@@ -2,9 +2,11 @@ import React, { useState } from "react"
 import { SmoothScrollProvider } from "@/components/SmoothScrollProvider"
 import { Navbar } from "@/components/Navbar"
 import { Hero } from "@/components/Hero"
+import { MilestonesSection } from "@/components/MilestonesSection"
 import { AboutSection } from "@/components/AboutSection"
-import { ServicesSection } from "@/components/ServicesSection"
 import { ProjectsSection } from "@/components/ProjectsSection"
+import { ArchitecturalPhilosophySection } from "@/components/ArchitecturalPhilosophySection"
+import { ServicesSection } from "@/components/ServicesSection"
 import { WhyChooseUsSection } from "@/components/WhyChooseUsSection"
 import { ProcessSection } from "@/components/ProcessSection"
 import { GallerySection } from "@/components/GallerySection"
@@ -33,51 +35,57 @@ export function App() {
         <Navbar />
 
         <main id="main-content">
-          {/* 2. Hero Section with Real Nirman Building Background Image */}
-          <Hero />
+          {/* 2. Nyati Group Style Hero Section with Real Nirman Building & Staggered Animations */}
+          <Hero onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 3. About Section (Brand Identity & Principles) */}
-          <AboutSection />
+          {/* 3. Nyati Group Style Milestones Counter Bar ("Numbers That Speak") */}
+          <MilestonesSection />
 
-          {/* 4. Comprehensive Business Services */}
-          <ServicesSection onSelectService={handleOpenConsultation} />
+          {/* 4. Nyati Group Style "Who We Are" Split Storytelling Section */}
+          <AboutSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 5. Architectural Portfolio & Real Nirman Projects (Click opens project preview, NO form) */}
+          {/* 5. Nyati Group Style "Featured Landmarks" Portfolio (Click opens project preview, NO form) */}
           <ProjectsSection />
 
-          {/* 6. Why Choose Us: Foundational Principles */}
+          {/* 6. Nyati Group Style Architectural Philosophy Parallax Quote Showcase */}
+          <ArchitecturalPhilosophySection />
+
+          {/* 7. Comprehensive Business Services */}
+          <ServicesSection onSelectService={handleOpenConsultation} />
+
+          {/* 8. Why Choose Us: Foundational Principles */}
           <WhyChooseUsSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 7. 6-Stage Construction Workflow Timeline */}
+          {/* 9. 6-Stage Construction Workflow Timeline */}
           <ProcessSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 8. Visual Portfolio Gallery */}
+          {/* 10. Visual Portfolio Gallery */}
           <GallerySection />
 
-          {/* 9. Actual Google Business 4.8 Rating & Verified Reviews */}
+          {/* 11. Actual Google Business 4.8 Rating & Verified Reviews */}
           <TestimonialsSection />
 
-          {/* 10. Frequently Asked Questions */}
+          {/* 12. Frequently Asked Questions */}
           <FaqSection onOpenConsultation={() => handleOpenConsultation()} />
 
-          {/* 11. Office Contact Details & High-Contrast Enquiry Form */}
+          {/* 13. Office Contact Details & High-Contrast Enquiry Form */}
           <ContactSection />
 
-          {/* 12. Google Maps Nachane Office Location */}
+          {/* 14. Google Maps Nachane Office Location */}
           <GoogleMapsSection />
         </main>
 
-        {/* 13. Deep Charcoal Architectural Footer */}
+        {/* 15. Deep Charcoal Architectural Footer */}
         <Footer />
 
-        {/* 14. Project Consultation Modal Dialog */}
+        {/* 16. Project Consultation Modal Dialog */}
         <ConsultationDialog
           open={consultationOpen}
           onOpenChange={setConsultationOpen}
           initialProjectType={selectedService}
         />
 
-        {/* 15. Floating Back To Top Button */}
+        {/* 17. Floating Back To Top Button */}
         <BackToTop />
 
       </div>
